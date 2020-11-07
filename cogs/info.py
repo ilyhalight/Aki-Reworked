@@ -96,7 +96,21 @@ class info(commands.Cog):
                 emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)
                 print(f'[Logs:info] Информация о категории "Утилиты" была выведена для пользователя {user} | {prefix}help util [EU]')                
-                
+
+    @commands.command(aliases = ['Ahelp', 'ahelp', 'Admin_help', 'admin_help'])   
+    @commands.is_owner() 
+    async def __ahelp(self, ctx):     
+            emb = discord.Embed(title = f'Available commands:', description = f'**Prefix: `{prefix}`**', color = cogs_color['AHELP COLOR'])
+            emb.add_field(name = f'{prefix}test', value = f'Command for checking the bot`s health', inline=False)
+            emb.add_field(name = f'{prefix}emoji', value = f'Add emoji to message', inline=False)
+            emb.add_field(name = f'{prefix}del_emoji', value = f'Remove specific user emoji from a message', inline=False)
+            emb.add_field(name = f'{prefix}clear_emoji', value = f'Remove all specific emojis from a message', inline=False)
+            emb.add_field(name = f'{prefix}clear_all_emoji', value = f'Will remove absolutely all emoji from the message', inline=False)
+            emb.add_field(name = f'{prefix}bot_status', value = f'Change bot status before reboot', inline=False)
+            emb.set_thumbnail(url = self.client.user.avatar_url)
+            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            await ctx.send (embed = emb)
+            print(f'[Logs:info] Админская сводка команд была выведена | {prefix}ahelp [EU]')                    
                 
 #   ██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
 #   ██╔══██╗██║░░░██║██╔════╝██╔════╝██║██╔══██╗████╗░██║
@@ -180,7 +194,22 @@ class info(commands.Cog):
                 emb.set_thumbnail(url = self.client.user.avatar_url)
                 emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)    
-                print(f'[Logs:info] Информация о категории "Утилиты" была выведена для пользователя {user} | {prefix}хелп утилиты [RU]')                  
-            
+                print(f'[Logs:info] Информация о категории "Утилиты" была выведена для пользователя {user} | {prefix}хелп утилиты [RU]')      
+                            
+    @commands.command(aliases = ['Ахелп', 'ахелп', 'Админ_хелп', 'админ_хелп'])   
+    @commands.is_owner() 
+    async def ___ahelp(self, ctx):     
+            emb = discord.Embed(title = f'Доступные команды:', description = f'**Префикс: `{prefix}`**', color = cogs_color['AHELP COLOR'])
+            emb.add_field(name = f'{prefix}тест', value = f'Команда для проверки работоспособности бота', inline=False)
+            emb.add_field(name = f'{prefix}эмоджи', value = f'Добавить эмоджи к сообщению', inline=False)
+            emb.add_field(name = f'{prefix}удалить_эмоджи', value = f'Удалить конкретные эмоджи пользователя с сообщения', inline=False)
+            emb.add_field(name = f'{prefix}стереть_эмодзи', value = f'Стереть конкретные эмоджи с сообщения', inline=False)
+            emb.add_field(name = f'{prefix}стереть_все_эмодзи', value = f'Стереть абсолютно все эмоджи с сообщения', inline=False)
+            emb.add_field(name = f'{prefix}бот_статус', value = f'Изменить статус бота до перезагрузки', inline=False)
+            emb.set_thumbnail(url = self.client.user.avatar_url)
+            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            await ctx.send (embed = emb)
+            print(f'[Logs:info] Админская сводка команд была выведена | {prefix}ахелп [RU]')   
+                    
 def setup(client):
     client.add_cog(info(client))
