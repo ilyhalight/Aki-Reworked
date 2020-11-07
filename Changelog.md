@@ -31,3 +31,7 @@
 # Early Alpha 0.1.2 - (2020-11-07)
 ## Features:
 - Fixed a small bug in the dictionaries config
+- Added new cog - info.py
+- Added command stub $help (Just a template)
+- Added new dictionary - other_settings
+- Added 'COMMAND VALUE' to the other_settings dictionary
