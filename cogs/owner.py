@@ -1,9 +1,8 @@
 import discord
 from discord.ext import commands
 import os, config
-from config import cogs_color, settings, quick_messages
+from config import cogs_color, settings, quick_messages, other_settings
 prefix = settings['PREFIX']
-bot_name = settings['BOT NAME']
 unknown_log = quick_messages['UNKNOWN ERROR LOG']
 unknown = quick_messages['UNKNOWN ERROR']
 copyright_ru = quick_messages['COPYRIGHT RU']
@@ -13,43 +12,67 @@ class owner(commands.Cog):
     def __init__(self, client):
         self.client = client
         
-    @commands.command()
+    @commands.command(aliases = ['Test', 'test', 'Тест', 'тест'])
     @commands.is_owner()
-    async def test(self, ctx):
+    async def __test(self, ctx):
         await ctx.send("Hello, World")
         
     @commands.command(aliases = ['Emoji', 'emoji', 'Reaction', 'reaction', 'Эмодзи', 'эмодзи', 'Эмоджи', 'эмоджи', 'Реакция', 'реакция'])
     @commands.is_owner()
-    async def __emoji(self, ctx, id: int, reaction: str):
-        await ctx.message.delete()
-        message = await ctx.message.channel.fetch_message(id)
-        await message.add_reaction(reaction) # Добавить реакцию к сообщению
-        print(f"[Logs:owner] К сообщению [{id}] была добавлена эмоджи | {prefix}emoji")
-
-    @commands.command(aliases = ['Del_emoji', 'del_emoji', 'Del_reaction', 'del_reaction', 'Remove_emoji', 'remove_emoji', 'Remove_reaction', 'remove_reaction',  'Дел_эмодзи', 'дел_эмодзи', 'Дел_эмоджи', 'дел_эмоджи', 'Дел_реакцию', 'дел_реакцию'])
+    async def __emoji(self, ctx, id: int = None, reaction: str = None):
+        if id != None and reaction != None:
+            await ctx.message.delete()
+            message = await ctx.message.channel.fetch_message(id)
+            await message.add_reaction(reaction) # Добавить реакцию к сообщению
+            print(f"[Logs:owner] К сообщению [{id}] была добавлена эмоджи | {prefix}emoji")
+        else:
+            emb = discord.Embed(description = f'Пример: `{prefix}эмоджи <id сообщения> <id эмоджи>` - Добавить эмоджи к сообщению.', color = cogs_color['ADD EMOJI COLOR ERROR'])
+            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            await ctx.send(embed = emb)
+            print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}emoji')
+            
+    @commands.command(aliases = ['Del_emoji', 'del_emoji', 'Del_reaction', 'del_reaction', 'Delete_emoji', 'delete_emoji', 'Delete_reaction', 'delete_reaction', 'Remove_emoji', 'remove_emoji', 'Remove_reaction', 'remove_reaction',  'Дел_эмодзи', 'дел_эмодзи', 'Дел_эмоджи', 'дел_эмоджи', 'Дел_реакцию', 'дел_реакцию', 'Удалить_эмоджи', 'удалить_эмоджи', 'Удалить_реакцию', 'удалить_реакцию'])
     @commands.is_owner()
-    async def __delemoji(self, ctx, id: int, reaction: str, member: discord.Member = None):
-        user = ctx.message.author if (member == None) else member # Если member не указан, то им будет автор сообщения
-        await ctx.message.delete()
-        message = await ctx.message.channel.fetch_message(id)
-        await message.remove_reaction(reaction, user) # Удалить конкретную реакцию, конкретного пользователя
-        print(f"[Logs:owner] Отправленное пользователем {user} эмоджи было удалено для сообщения - [{id}] | {prefix}del_emoji")
+    async def __delemoji(self, ctx, id: int = None, reaction: str = None, member: discord.Member = None):
+        if id != None and reaction != None:
+            user = ctx.message.author if (member == None) else member # Если member не указан, то им будет автор сообщения
+            await ctx.message.delete()
+            message = await ctx.message.channel.fetch_message(id)
+            await message.remove_reaction(reaction, user) # Удалить конкретную реакцию, конкретного пользователя в кокретном сообщение
+            print(f"[Logs:owner] Отправленное пользователем {user} эмоджи было удалено для сообщения - [{id}] | {prefix}delete_emoji")
+        else:
+            emb = discord.Embed(description = f'Пример: `{prefix}удалить_эмодзи <id сообщения> <id эмоджи> [@Пользователь]` - Стереть конкретные эмоджи с сообщения.', color = cogs_color['DELETE EMOJI COLOR ERROR'])
+            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            await ctx.send(embed = emb)
+            print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}delete_emoji')      
 
     @commands.command(aliases = ['Clear_emoji', 'clear_emoji', 'Clear_reaction', 'clear_reaction', 'Стереть_эмодзи', 'стереть_эмодзи', 'Стереть_эмоджи', 'стереть_эмоджи', 'Стереть_реакцию', 'стереть_реакцию'])
     @commands.is_owner()
-    async def __clearemoji(self, ctx, id: int, reaction: str):
-        await ctx.message.delete()
-        message = await ctx.message.channel.fetch_message(id)
-        await message.clear_reaction(reaction) # Удалить определенные реакции к сообщению
-        print(f"[Logs:owner] В сообщение [{id}] были очищенны определенные эмоджи | {prefix}clear_emoji")
+    async def __clearemoji(self, ctx, id: int = None, reaction: str = None):
+        if id != None and reaction != None:
+            await ctx.message.delete()
+            message = await ctx.message.channel.fetch_message(id)
+            await message.clear_reaction(reaction) # Удалить определенные реакции к сообщению
+            print(f"[Logs:owner] В сообщение [{id}] были очищенны определенные эмоджи | {prefix}clear_emoji")
+        else:
+            emb = discord.Embed(description = f'Пример: `{prefix}Стереть_эмодзи <id сообщения> <id эмоджи>` - Стереть конкретные эмоджи с сообщения.', color = cogs_color['CLEAR EMOJI COLOR ERROR'])
+            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            await ctx.send(embed = emb)
+            print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}clear_emoji')   
         
     @commands.command(aliases = ['Clear_all_emoji', 'clear_all_emoji', 'Clear_all_reactions', 'clear_all_reactions', 'Стереть_все_эмодзи', 'стереть_все_эмодзи', 'Стереть_все_эмоджи', 'стереть_все_эмоджи', 'Стереть_все_реакции', 'стереть_все_реакции'])
     @commands.is_owner()
-    async def __clearallemoji(self, ctx, id: int):
-        await ctx.message.delete()
-        message = await ctx.message.channel.fetch_message(id)
-        await message.clear_reactions() # Очистить все реакции к сообщению
-        print(f"[Logs:owner] В сообщение [{id}] были очищенны все эмоджи | {prefix}clear_all_emoji")        
+    async def __clearallemoji(self, ctx, id: int = None):
+        if id != None:
+            await ctx.message.delete()
+            message = await ctx.message.channel.fetch_message(id)
+            await message.clear_reactions() # Очистить все реакции к сообщению
+            print(f"[Logs:owner] В сообщение [{id}] были очищенны все эмоджи | {prefix}clear_all_emoji")
+        else:
+            emb = discord.Embed(description = f'Пример: `{prefix}Стереть_все_эмодзи <id сообщения>` - Стереть абсолютно все эмоджи с сообщения.', color = cogs_color['CLEAR ALL EMOJI COLOR ERROR'])
+            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            await ctx.send(embed = emb)
+            print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}clear_all_emoji')      
     
     @commands.command(aliases = ['Bot_status', 'bot_status', 'Бот_статус', 'бот_статус'])
     @commands.is_owner()
@@ -79,7 +102,7 @@ class owner(commands.Cog):
             if active == 'Watching' or active == 'watching' or active == 'Watch' or active == 'watch' or active == 'Смотрит' or active == 'смотрит' or active == 'Смотреть' or active == 'смотреть':
                 await self.client.change_presence(status=discord.Status.idle, activity=discord.Activity(name=arg, type=discord.ActivityType.watching))
                 await ctx.send("Изменяем...") 
-                print(f'{status_log} "Смотрит в {arg}" | {prefix}bot_status')
+                print(f'{status_log} "Смотрит {arg}" | {prefix}bot_status')
                 
             else:
                 emb = discord.Embed(description = f'{unknown}', color = cogs_color['BOT COLOR ERROR'])
