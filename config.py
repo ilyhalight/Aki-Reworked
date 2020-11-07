@@ -18,6 +18,12 @@ cogs_color = {
 	'BOT COLOR ARG ERROR': 0xca3a3a,
 	'BOT COLOR ERROR': 0xc9a638,
 	'HELP NONE COLOR': 0x2285f5,
+ 	'AHELP COLOR': 0x2285f5,
+  	'CLEAR ALL EMOJI COLOR ERROR': 0xca3a3a,
+  	'CLEAR EMOJI COLOR ERROR': 0xca3a3a,
+  	'DELETE EMOJI COLOR ERROR': 0xca3a3a,
+    	'ADD EMOJI COLOR ERROR': 0xca3a3a,
+
 }
 
 quick_messages = {
