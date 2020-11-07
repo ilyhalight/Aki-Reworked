@@ -23,7 +23,7 @@ quick_messages = {
     #logs
 	'UNKNOWN ERROR LOG': '[Logs:error] Произошла неизвестная ошибка! |',
  	'UNKNOWN ERROR': 'Произошла неизвестная ошибка!',
-  	'BOT STATUS LOG': '[Logs:owner] Статус бота был успешно сменен на:'
+  	'BOT STATUS LOG': '[Logs:owner] Статус бота был успешно сменен на:',
    #other
 	'COPYRIGHT RU': 'Copyright © 2020 Aki | Все права защищены.',
  	'COPYRIGHT EN': 'Copyright © 2020 Aki | All rights reserved.',
