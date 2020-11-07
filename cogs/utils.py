@@ -1,9 +1,8 @@
 import discord
 from discord.ext import commands
 import os, random, datetime, clock, config, wikipedia, pytz
-from config import cogs_color, settings, quick_messages
+from config import cogs_color, settings, quick_messages, other_settings
 prefix = settings['PREFIX']
-bot_name = settings['BOT NAME']
 unknown_log = quick_messages['UNKNOWN ERROR LOG']
 unknown = quick_messages['UNKNOWN ERROR']
 copyright_ru = quick_messages['COPYRIGHT RU']
@@ -93,6 +92,7 @@ class utils(commands.Cog):
                 emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
                 print(f'{unknown_log} {prefix}wiki [EU]')
+       
                 
 #██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
 #██╔══██╗██║░░░██║██╔════╝██╔════╝██║██╔══██╗████╗░██║

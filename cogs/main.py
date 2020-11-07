@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import os, config
-from config import cogs_color, settings, quick_messages
+from config import cogs_color, settings, quick_messages, other_settings
 prefix = settings['PREFIX']
 class main(commands.Cog):
     
