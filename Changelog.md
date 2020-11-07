@@ -35,3 +35,10 @@
 - Added command stub $help (Just a template)
 - Added new dictionary - other_settings
 - Added 'COMMAND VALUE' to the other_settings dictionary
+
+# Early Alpha 0.1.3 - (2020-11-08)
+## Features:
+- Added explanations for the commands $clear_all_emoji
+- Added explanations for the commands $clear_emoji
+- Added explanations for the commands $delete_emoji
+- Added explanations for the commands $emoji
