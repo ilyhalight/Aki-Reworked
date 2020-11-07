@@ -17,6 +17,7 @@ cogs_color = {
 	'WIKIPEDIA COLOR ERROR': 0xc9a638,
 	'BOT COLOR ARG ERROR': 0xca3a3a,
 	'BOT COLOR ERROR': 0xc9a638,
+	'HELP NONE COLOR': 0x2285f5,
 }
 
 quick_messages = {
