@@ -28,3 +28,7 @@ quick_messages = {
 	'COPYRIGHT RU': 'Copyright © 2020 Aki | Все права защищены.',
  	'COPYRIGHT EN': 'Copyright © 2020 Aki | All rights reserved.',
 }
+
+other_settings = {
+	'COMMAND VALUE': '11',
+}
