@@ -27,3 +27,7 @@
 - Added 'COPYRIGHT RU' to the quick_messages dictionary
 - Added 'COPYRIGHT EN' to the quick_messages dictionary
 - Added 'BOT STATUS LOG' to the quick_messages dictionary
+
+# Early Alpha 0.1.2 - (2020-11-06)
+## Features:
+- Fixed a small bug in the dictionaries config
