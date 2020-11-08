@@ -3,8 +3,6 @@ from discord.ext import commands
 import os, config
 from config import cogs_color, settings, quick_messages, other_settings
 prefix = settings['PREFIX']
-unknown_log = quick_messages['UNKNOWN ERROR LOG']
-unknown = quick_messages['UNKNOWN ERROR']
 copyright_ru = quick_messages['COPYRIGHT RU']
 copyright_en = quick_messages['COPYRIGHT EN']
 com_value = other_settings['COMMAND VALUE']
@@ -30,9 +28,9 @@ class info(commands.Cog):
             emb.add_field(name = f'Actions ({prefix}help Actions)', value = f'`This section contains all RP commands`', inline = False)
             emb.add_field(name = f'Funny ({prefix}help Funny)', value = f'`This section contains all the fun commands`', inline = False)
             emb.add_field(name = f'Utilities ({prefix}help Utilities)', value = f'`This section contains all the utilities`', inline = False)
-            emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix} bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
+            emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix}bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
             emb.set_thumbnail(url = self.client.user.avatar_url)
-            emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
             await ctx.send (embed = emb)
             print(f'[Logs:info] Информация о категориях команд бота выведена для пользователя {user} | {prefix}help [EU]')
         if title != None:
@@ -43,7 +41,7 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix} bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
+                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix}bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
                 emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)
@@ -55,9 +53,9 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix} bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
+                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix}bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
-                emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)
                 print(f'[Logs:info] Информация о категории "Модерация" была выведена для пользователя {user} | {prefix}help moder [EU]')                              
             if title == 'Actions' or title == 'actions' or title == 'Action' or title == 'action':
@@ -67,9 +65,9 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix} bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
+                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix}bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
-                emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)
                 print(f'[Logs:info] Информация о категории "Действия" была выведена для пользователя {user} | {prefix}help moder [EU]')    
             if title == 'Funny' or title == 'funny' or title == 'Fun' or title == 'fun':
@@ -79,9 +77,9 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix} bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
+                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix}bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
-                emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)
                 print(f'[Logs:info] Информация о категории "Весёлое" была выведена для пользователя {user} | {prefix}help fun [EU]')    
             if title == 'Utilities' or title == 'utilities' or title == 'Util' or title == 'util':
@@ -91,9 +89,9 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}time', value = f'Shows the current time by CET', inline = False)
                 emb.add_field(name = f'{prefix}wiki', value = f'Displays the information you are looking for from Wikipedia', inline = False)
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix} bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
+                emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix}bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
-                emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)
                 print(f'[Logs:info] Информация о категории "Утилиты" была выведена для пользователя {user} | {prefix}help util [EU]')                
 
@@ -108,7 +106,7 @@ class info(commands.Cog):
             emb.add_field(name = f'{prefix}clear_all_emoji', value = f'Will remove absolutely all emoji from the message', inline = False)
             emb.add_field(name = f'{prefix}bot_status', value = f'Change bot status before reboot', inline = False)
             emb.set_thumbnail(url = self.client.user.avatar_url)
-            emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
             await ctx.send (embed = emb)
             print(f'[Logs:info] Админская сводка команд была выведена | {prefix}ahelp [EU]')                    
 
@@ -121,11 +119,35 @@ class info(commands.Cog):
         emb.add_field( name = f'Version:', value = 'Early Alpha', inline=True)
         emb.add_field( name = f'Patch:', value = f'{other_settings["CURRENT PATCH"]}', inline=True)
         emb.set_thumbnail(url = self.client.user.avatar_url)
-        emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+        emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
         await ctx.send ( embed = emb)
         print(f"[Logs:info] Информация о боте была успешно выведена | {prefix}info [EN] ")         
         
-               
+    @commands.command(aliases = ['Server', 'server', 'Server_info', 'server_info']) # Thanks Fsoky community
+    async def __serverinfo(self, ctx):
+        allchannels = len(ctx.guild.channels)
+        allvoice = len(ctx.guild.voice_channels)
+        alltext = len(ctx.guild.text_channels)
+        allroles = len(ctx.guild.roles)
+        emb = discord.Embed(title=f"{ctx.guild.name}", color=cogs_color['SERVER INFO COLOR'], timestamp=ctx.message.created_at)
+        emb.description=(
+            f":timer: Server created: **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
+            f":flag_white: Region: **{ctx.guild.region}\n\n:crown:Глава сервера **{ctx.guild.owner}**\n\n"
+            f":shield: Verification level: **{ctx.guild.verification_level}**\n\n"
+            f":musical_keyboard: Total channels: **{allchannels}**\n\n"
+            f":loud_sound: Voice channels: **{allvoice}**\n\n"
+            f":keyboard: Text channels: **{alltext}**\n\n"
+            f":briefcase: Total roles: **{allroles}**\n\n"
+            f":slight_smile: People on the server: **{ctx.guild.member_count}\n\n"
+        )
+
+        emb.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url)
+        emb.set_thumbnail(url = self.client.user.avatar_url)
+        emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+        await ctx.send ( embed = emb)
+        print(f"[Logs:info] Информация о сервере была успешно выведена | {prefix}server ")  
+        
+                       
 #   ██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
 #   ██╔══██╗██║░░░██║██╔════╝██╔════╝██║██╔══██╗████╗░██║
 #   ██████╔╝██║░░░██║╚█████╗░╚█████╗░██║███████║██╔██╗██║
@@ -145,7 +167,7 @@ class info(commands.Cog):
             emb.add_field(name = f'Утилиты ({prefix}хелп Утилиты)', value = f'`В данном разделе содержатся все утилиты`', inline = False)
             emb.add_field(name = f'Внимание! Если заметили ошибки или недочёты, пожалуйста, опишите её в команде {prefix}bugs [NO WORK], будем благодарны!', value = f'Всего команд: {com_value}', inline = False)
             emb.set_thumbnail(url = self.client.user.avatar_url)
-            emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send (embed = emb)
             print(f'[Logs:info] Информация о категориях команд бота была выведена для пользователя {user} | {prefix}хелп [RU]')
         if title != None:
@@ -158,7 +180,7 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'Внимание! Если заметили ошибки или недочёты, пожалуйста, опишите её в команде {prefix}bugs [NO WORK], будем благодарны!', value = f'Всего команд: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
-                emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)    
                 print(f'[Logs:info] Информация о категории "Информация" была выведена для пользователя {user} | {prefix}хелп инфо [RU]')   
             if title == 'Модерирование' or title == 'модерирование' or title == 'Модер' or title == 'модер' or title == 'Модерация' or title == 'модерация':
@@ -170,7 +192,7 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'Внимание! Если заметили ошибки или недочёты, пожалуйста, опишите её в команде {prefix}bugs [NO WORK], будем благодарны!', value = f'Всего команд: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
-                emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)    
                 print(f'[Logs:info] Информация о категории "Модерация" была выведена для пользователя {user} | {prefix}хелп модер [RU]')
             if title == 'Действия' or title == 'действия':
@@ -182,7 +204,7 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'Внимание! Если заметили ошибки или недочёты, пожалуйста, опишите её в команде {prefix}bugs [NO WORK], будем благодарны!', value = f'Всего команд: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
-                emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+                emb.set_footer(text =copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)    
                 print(f'[Logs:info] Информация о категории "Действия" была выведена для пользователя {user} | {prefix}хелп действия [RU]')                                      
             if title == 'Весёлое' or title == 'весёлое':
@@ -194,7 +216,7 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'Внимание! Если заметили ошибки или недочёты, пожалуйста, опишите её в команде {prefix}bugs [NO WORK], будем благодарны!', value = f'Всего команд: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
-                emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)    
                 print(f'[Logs:info] Информация о категории "Весёлое" была выведена для пользователя {user} | {prefix}хелп весёлое [RU]')   
             if title == 'Утилиты' or title == 'утилиты' or title == 'Утил' or title == 'утил':
@@ -206,7 +228,7 @@ class info(commands.Cog):
                 emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
                 emb.add_field(name = f'Внимание! Если заметили ошибки или недочёты, пожалуйста, опишите её в команде {prefix}bugs [NO WORK], будем благодарны!', value = f'Всего команд: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
-                emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send (embed = emb)    
                 print(f'[Logs:info] Информация о категории "Утилиты" была выведена для пользователя {user} | {prefix}хелп утилиты [RU]')      
                             
@@ -238,39 +260,27 @@ class info(commands.Cog):
         await ctx.send ( embed = emb)
         print(f"[Logs:info] Информация о боте была успешно выведена | {prefix}инфо [RU]")   
     
-    @commands.command(aliases = ['Сервер', 'сервер'])
+    @commands.command(aliases = ['Сервер', 'сервер', 'Сервер_инфо', 'сервер_инфо']) # Thanks Fsoky community
     async def ___serverinfo(self, ctx):
-        members = ctx.guild.members
         allchannels = len(ctx.guild.channels)
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
-        # embed = discord.Embed(title=f"{ctx.guild.name}", color=0xff0000, timestamp=ctx.message.created_at)
-        # embed.description=(
-        #     f":timer: Сервер создали: **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
-        #     f":flag_white: Регион: **{ctx.guild.region}\n\n:crown:Глава сервера **{ctx.guild.owner}**\n\n"
-        #     f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
-        #     f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
-        #     f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
-        #     f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
-        #     f":keyboard: Текстовых каналов: **{alltext}**\n\n"
-        #     f":briefcase: Всего ролей: **{allroles}**\n\n"
-        #     f":slight_smile: Людей на сервере: **{ctx.guild.member_count}\n\n"
-        # )
+        emb = discord.Embed(title=f"{ctx.guild.name}", color=cogs_color['SERVER INFO COLOR'], timestamp=ctx.message.created_at)
+        emb.description=(
+            f":timer: Сервер создали: **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
+            f":flag_white: Регион: **{ctx.guild.region}\n\n:crown:Глава сервера **{ctx.guild.owner}**\n\n"
+            f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
+            f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
+            f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
+            f":keyboard: Текстовых каналов: **{alltext}**\n\n"
+            f":briefcase: Всего ролей: **{allroles}**\n\n"
+            f":slight_smile: Людей на сервере: **{ctx.guild.member_count}\n\n"
+        )
 
-        # embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url)
-        # embed.set_thumbnail(url = self.client.user.avatar_url)
-        # embed.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
-        # await ctx.send(embed=embed)
-
-        emb = discord.Embed( title = f"{ctx.guild.name}", colour = cogs_color['BOT INFO COLOR'], timestamp=ctx.message.created_at)
-        emb.add_field( name = f'Сервер был создан:', value = f'**{ctx.guild.created_at.strftime("%A, %b %#d %Y")}**', inline=True)
-        emb.add_field( name = f'Отдельное спасибо:', value = f'{settings["SPECIAL THANKS"]}', inline=True)
-        emb.add_field( name = f'Лицензия:', value = 'CC CM-KD-QV', inline=True)
-        emb.add_field( name = f'Версия:', value = 'Early Alpha', inline=True)
-        emb.add_field( name = f'Патч:', value = f'{other_settings["CURRENT PATCH"]}', inline=True)
+        emb.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url)
         emb.set_thumbnail(url = self.client.user.avatar_url)
-        emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+        emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
         await ctx.send ( embed = emb)
         print(f"[Logs:info] Информация о сервере была успешно выведена | {prefix}server ")          
                 

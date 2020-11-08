@@ -27,7 +27,7 @@ class owner(commands.Cog):
             print(f"[Logs:owner] К сообщению [{id}] была добавлена эмоджи | {prefix}emoji")
         else:
             emb = discord.Embed(description = f'Пример: `{prefix}эмоджи <id сообщения> <id эмоджи>` - Добавить эмоджи к сообщению.', color = cogs_color['ADD EMOJI COLOR ERROR'])
-            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}emoji')
             
@@ -42,7 +42,7 @@ class owner(commands.Cog):
             print(f"[Logs:owner] Отправленное пользователем {user} эмоджи было удалено для сообщения - [{id}] | {prefix}delete_emoji")
         else:
             emb = discord.Embed(description = f'Пример: `{prefix}удалить_эмодзи <id сообщения> <id эмоджи> [@Пользователь]` - Стереть конкретные эмоджи с сообщения.', color = cogs_color['DELETE EMOJI COLOR ERROR'])
-            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}delete_emoji')      
 
@@ -56,7 +56,7 @@ class owner(commands.Cog):
             print(f"[Logs:owner] В сообщение [{id}] были очищенны определенные эмоджи | {prefix}clear_emoji")
         else:
             emb = discord.Embed(description = f'Пример: `{prefix}Стереть_эмодзи <id сообщения> <id эмоджи>` - Стереть конкретные эмоджи с сообщения.', color = cogs_color['CLEAR EMOJI COLOR ERROR'])
-            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}clear_emoji')   
         
@@ -70,7 +70,7 @@ class owner(commands.Cog):
             print(f"[Logs:owner] В сообщение [{id}] были очищенны все эмоджи | {prefix}clear_all_emoji")
         else:
             emb = discord.Embed(description = f'Пример: `{prefix}Стереть_все_эмодзи <id сообщения>` - Стереть абсолютно все эмоджи с сообщения.', color = cogs_color['CLEAR ALL EMOJI COLOR ERROR'])
-            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}clear_all_emoji')      
     
@@ -79,7 +79,7 @@ class owner(commands.Cog):
     async def __botstatus(self, ctx, active = None, *, arg = None): 
         if active == None or arg == None:
             emb = discord.Embed(description = f'Пример: `{prefix}Бот_статус Стримит $help` - Статус бота будет изменен на: "cтримит $help".', color = cogs_color['BOT COLOR ARG ERROR'])
-            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}bot_status')
         
@@ -88,7 +88,7 @@ class owner(commands.Cog):
                 await self.client.change_presence(status=discord.Status.idle, activity=discord.Activity(name=arg, type=discord.ActivityType.listening))
                 await ctx.send("Изменяем...") 
                 print(f'{status_log} "Слушает {arg}" | {prefix}bot_status') 
-        
+                
             if active == 'Playing' or active == 'playing' or active == 'Play' or active == 'play' or active == 'Играет' or active == 'играет' or active == 'Игра' or active == 'игра' or active == 'Играть' or active == 'играть':
                 await self.client.change_presence(status=discord.Status.idle, activity=discord.Activity(name=arg, type=discord.ActivityType.streaming))
                 await ctx.send("Изменяем...") 
@@ -105,8 +105,8 @@ class owner(commands.Cog):
                 print(f'{status_log} "Смотрит {arg}" | {prefix}bot_status')
                 
             else:
-                emb = discord.Embed(description = f'{unknown}', color = cogs_color['BOT COLOR ERROR'])
-                emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+                emb = discord.Embed(description = unknown, color = cogs_color['BOT COLOR ERROR'])
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
                 print(f'{unknown_log} {prefix}bot_status')    
         

@@ -1,12 +1,14 @@
 import discord
 from discord.ext import commands
 import os, random, datetime, clock, config, wikipedia, pytz
-from config import cogs_color, settings, quick_messages, other_settings
+from config import cogs_color, settings, quick_messages, other_settings, fast_link
 prefix = settings['PREFIX']
 unknown_log = quick_messages['UNKNOWN ERROR LOG']
 unknown = quick_messages['UNKNOWN ERROR']
+unknown_en = quick_messages['UNKNOWN ERROR EN']
 copyright_ru = quick_messages['COPYRIGHT RU']
 copyright_en = quick_messages['COPYRIGHT EN']
+third_sym_log = quick_messages['THIRD PARTY SYM ERROR LOG']
 class utils(commands.Cog):
     
     def __init__(self, client):
@@ -30,7 +32,7 @@ class utils(commands.Cog):
     async def __random(self, ctx, count = None):
         if count == None:
             emb = discord.Embed(description = f'Example: `{prefix}random 5` - Will print a number from 1 to 5.', color = cogs_color['RANDOM COLOR'])
-            emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:utils] Максимальное число не было указано | {prefix}random [EU]')
         else:
@@ -38,10 +40,10 @@ class utils(commands.Cog):
                 await ctx.send(str(random.randint(int(1), int(count))))
                 print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}random [EU]')
             except ValueError:
-                emb = discord.Embed(description = 'Mistake! Third party symbols were found!', color = cogs_color['RANDOM COLOR ERROR'])
-                emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+                emb = discord.Embed(description = quick_messages['THIRD PARTY SYM ERROR EN'], color = cogs_color['RANDOM COLOR ERROR'])
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
-                print(f'[Logs:error] Ошибка! Были найдены сторонние символы! | {prefix}random [EU]')    
+                print(f'{third_sym_log} {prefix}random [EU]')    
                 
     @commands.command(aliases = ['Time', 'time', 'Clock', 'clock'])
     async def __time(self, ctx):
@@ -50,15 +52,15 @@ class utils(commands.Cog):
         time_clock = (f"{clock_dt.hour}{clock_dt.minute}")
 
         time_clock = float(datetime.datetime.strptime(time_clock, '%H%M').strftime('%I.%M').lower())
-        print(f'[Logs:utils] Время было успешно выведено | {prefix}time [EU]')
+        print(f'[Logs:utils] Часы были успешно выведено | {prefix}time [EU]')
 
         table_clock = clock.diff
         result_clock = table_clock.get(time_clock, table_clock[min(table_clock.keys(), key = lambda k: abs(k-time_clock))])
 
 
-        emb = discord.Embed( title = 'Online time', description = 'Current time by CET', colour = cogs_color['TIME COLOR'], url = 'https://time.is/CET' )
+        emb = discord.Embed( title = 'Online time', description = 'Current time by CET', colour = cogs_color['TIME COLOR'], url = fast_link['TIME CET'] )
 
-        emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+        emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
         emb.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url)
         emb.set_thumbnail(url = str(result_clock))
 
@@ -74,7 +76,7 @@ class utils(commands.Cog):
     async def __wiki(self, ctx, *, text = None):
         if text == None:
             emb = discord.Embed(description = f'Example: `{prefix}wiki discord` - Find information about discord on wikipedia.')
-            emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Искомая информация не была введена | {prefix}wiki [EU]')
         else:
@@ -84,12 +86,12 @@ class utils(commands.Cog):
                 summ = wikipedia.summary(text)
                 emb = discord.Embed(title = new_page.title, description = summ, color = cogs_color['WIKIPEDIA COLOR'])
                 emb.set_author(name = 'More information here! Click!', url = new_page.url, icon_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png')
-                emb.set_footer(icon_url = self.client.user.avatar_url, text = f'{copyright_en}')
+                emb.set_footer(icon_url = self.client.user.avatar_url, text = copyright_en)
                 await ctx.send(embed = emb)
                 print(f'[Logs:utils] Информация о "{text}" была выведена | {prefix}wiki [EU]')    
             except:
-                emb = discord.Embed(description = f'An unknown error has occurred!', color = cogs_color['WIKIPEDIA COLOR ERROR'])   
-                emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+                emb = discord.Embed(description = unknown_en, color = cogs_color['WIKIPEDIA COLOR ERROR'])   
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
                 print(f'{unknown_log} {prefix}wiki [EU]')
        
@@ -112,7 +114,7 @@ class utils(commands.Cog):
     async def ___random(self, ctx, count = None):
         if count == None:
             emb = discord.Embed(description = f'Пример: `{prefix}рандом 5` - Будет выведено число от 1 до 5.', color = cogs_color['RANDOM COLOR'])
-            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:utils] Максимальное число не было указано | {prefix}random [RU]')
         else:
@@ -120,9 +122,10 @@ class utils(commands.Cog):
                 await ctx.send(str(random.randint(int(1), int(count))))
                 print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}random [RU]')
             except ValueError:
-                msg = await ctx.send(embed = discord.Embed(description='Ошибка! Были найдены сторонние символы!', color = cogs_color['RANDOM COLOR ERROR']))
-                emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
-                print(f'[Logs:error] Ошибка! Были найдены сторонние символы! | {prefix}random [RU]')                          
+                emb = discord.Embed(description = quick_messages['THIRD PARTY SYM ERROR'], color = cogs_color['RANDOM COLOR ERROR'])
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f'{third_sym_log} {prefix}random [RU]')                          
     
     @commands.command(aliases = ['Время', 'время', 'Часы', 'часы', 'Тайм', 'тайм'])
     async def ___time(self, ctx):
@@ -130,13 +133,13 @@ class utils(commands.Cog):
         time_clock = (f"{clock_dt.hour}{clock_dt.minute}")
 
         time_clock = float(datetime.datetime.strptime(time_clock, '%H%M').strftime('%I.%M').lower())
-        print(f'[Logs:utils] Вывожу время | {prefix}time [RU]')
+        print(f'[Logs:utils] Часы были успешно выведены | {prefix}time [RU]')
 
         table_clock = clock.diff
         result_clock = table_clock.get(time_clock, table_clock[min(table_clock.keys(), key=lambda k: abs(k-time_clock))])
 
 
-        emb = discord.Embed(title = 'Время онлайн', description = 'Текущее время по МСК', colour = cogs_color['TIME COLOR'], url = 'https://time100.ru/')
+        emb = discord.Embed(title = 'Время онлайн', description = 'Текущее время по МСК', colour = cogs_color['TIME COLOR'], url = fast_link['TIME MSC'])
 
         emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
         emb.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url)
@@ -154,7 +157,7 @@ class utils(commands.Cog):
     async def ___wiki(self, ctx, *, text = None):
         if text == None:
             emb = discord.Embed(description = f'Пример: `{prefix}вики discord` - Будет выведена информация о дискорде.')
-            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Искомая информация не была введена | {prefix}wiki [RU]')
         else:
@@ -164,14 +167,14 @@ class utils(commands.Cog):
                 summ = wikipedia.summary(text)
                 emb = discord.Embed(title = new_page.title, description = summ, color = cogs_color['WIKIPEDIA COLOR'])
                 emb.set_author(name = 'Больше информации здесь! Кликай!', url = new_page.url, icon_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png')
-                emb.set_footer(icon_url = self.client.user.avatar_url, text = f"{copyright_ru}")
+                emb.set_footer(icon_url = self.client.user.avatar_url, text = copyright_ru)
                 await ctx.send(embed = emb)
                 print(f'[Logs:utils] Информация о "{text}" была выведена | {prefix}wiki [RU]')
             except:
-                emb = discord.Embed(description = f'{unknown}', color = cogs_color['WIKIPEDIA COLOR ERROR'])   
-                emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+                emb = discord.Embed(description = unknown, color = cogs_color['WIKIPEDIA COLOR ERROR'])   
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
-                print(f'{unknown_log} {prefix}wiki [EU]')            
+                print(f'{unknown_log} {prefix}wiki [RU]')            
                   
 def setup(client):
     client.add_cog(utils(client))
