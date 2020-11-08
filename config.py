@@ -25,13 +25,18 @@ cogs_color = {
   	'DELETE EMOJI COLOR ERROR': 0xca3a3a,
     'ADD EMOJI COLOR ERROR': 0xca3a3a,
 	'BOT INFO COLOR': 0x2285f5,
+ 	'SERVER INFO COLOR': 0x2285f5,
 }
 
 quick_messages = {
     #logs
 	'UNKNOWN ERROR LOG': '[Logs:error] Произошла неизвестная ошибка! |',
  	'UNKNOWN ERROR': 'Произошла неизвестная ошибка!',
+  	'UNKNOWN ERROR EN': 'An unknown error has occurred!',
   	'BOT STATUS LOG': '[Logs:owner] Статус бота был успешно сменен на:',
+   	'THIRD PARTY SYM ERROR': 'Ошибка! Были найдены сторонние символы!',
+    'THIRD PARTY SYM ERROR EN': 'Mistake! Third party symbols were found!',
+    'THIRD PARTY SYM ERROR LOG': '[Logs:error] Ошибка! Были найдены сторонние символы! |',
    #other
 	'COPYRIGHT RU': 'Copyright © 2020 Aki | Все права защищены.',
  	'COPYRIGHT EN': 'Copyright © 2020 Aki | All rights reserved.',
@@ -40,4 +45,9 @@ quick_messages = {
 other_settings = {
 	'COMMAND VALUE': '11',
 	'CURRENT PATCH': '0.1.4',
+}
+
+fast_link = {
+	'TIME MSC': 'https://time100.ru/',
+	'TIME CET': 'https://time.is/CET',
 }
