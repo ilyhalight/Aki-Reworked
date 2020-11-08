@@ -108,10 +108,24 @@ class info(commands.Cog):
             emb.add_field(name = f'{prefix}clear_all_emoji', value = f'Will remove absolutely all emoji from the message', inline = False)
             emb.add_field(name = f'{prefix}bot_status', value = f'Change bot status before reboot', inline = False)
             emb.set_thumbnail(url = self.client.user.avatar_url)
-            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
             await ctx.send (embed = emb)
             print(f'[Logs:info] Админская сводка команд была выведена | {prefix}ahelp [EU]')                    
-                
+
+    @commands.command(aliases = ['Info', 'info', 'Bot', 'bot', 'Bot_info', 'bot_info'])
+    async def __botinfo (self, ctx):
+        emb = discord.Embed( title = f'{ctx.guild.name}', description = f'Bot information about the **{self.client.user.name}**.\n The bot was written specifically for the Fame Group project.\n More about commands - `{prefix}help`', colour = cogs_color['BOT INFO COLOR'])
+        emb.add_field( name = f'Created me:', value = f'{settings["OWNER"]}', inline=True)
+        emb.add_field( name = f'Special thanks to:', value = f'{settings["SPECIAL THANKS"]}', inline=True)
+        emb.add_field( name = f'License:', value = 'CC CM-KD-QV', inline=True)
+        emb.add_field( name = f'Version:', value = 'Early Alpha', inline=True)
+        emb.add_field( name = f'Patch:', value = f'{other_settings["CURRENT PATCH"]}', inline=True)
+        emb.set_thumbnail(url = self.client.user.avatar_url)
+        emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
+        await ctx.send ( embed = emb)
+        print(f"[Logs:info] Информация о боте была успешно выведена | {prefix}info [EN] ")         
+        
+               
 #   ██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
 #   ██╔══██╗██║░░░██║██╔════╝██╔════╝██║██╔══██╗████╗░██║
 #   ██████╔╝██║░░░██║╚█████╗░╚█████╗░██║███████║██╔██╗██║
@@ -207,9 +221,58 @@ class info(commands.Cog):
             emb.add_field(name = f'{prefix}стереть_все_эмодзи', value = f'Стереть абсолютно все эмоджи с сообщения', inline = False)
             emb.add_field(name = f'{prefix}бот_статус', value = f'Изменить статус бота до перезагрузки', inline = False)
             emb.set_thumbnail(url = self.client.user.avatar_url)
-            emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send (embed = emb)
             print(f'[Logs:info] Админская сводка команд была выведена | {prefix}ахелп [RU]')   
-                    
+
+    @commands.command(aliases = ['Инфо', 'инфо', 'Бот', 'бот', 'Бот_инфо', 'бот_инфо'])
+    async def ___botinfo (self, ctx):
+        emb = discord.Embed( title = f'{ctx.guild.name}', description = f'Информация о боте **{self.client.user.name}**.\n Бот был написан специально для проекта Fame Group.\n Подробнее о командах - `{prefix}хелп`', colour = cogs_color['BOT INFO COLOR'])
+        emb.add_field( name = f'Меня создал:', value = settings['OWNER'], inline=True)
+        emb.add_field( name = f'Отдельное спасибо:', value = settings['SPECIAL THANKS'], inline=True)
+        emb.add_field( name = f'Лицензия:', value = 'CC CM-KD-QV', inline=True)
+        emb.add_field( name = f'Версия:', value = 'Early Alpha', inline=True)
+        emb.add_field( name = f'Патч:', value = other_settings['CURRENT PATCH'], inline=True)
+        emb.set_thumbnail(url = self.client.user.avatar_url)
+        emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+        await ctx.send ( embed = emb)
+        print(f"[Logs:info] Информация о боте была успешно выведена | {prefix}инфо [RU]")   
+    
+    @commands.command(aliases = ['Сервер', 'сервер'])
+    async def ___serverinfo(self, ctx):
+        members = ctx.guild.members
+        allchannels = len(ctx.guild.channels)
+        allvoice = len(ctx.guild.voice_channels)
+        alltext = len(ctx.guild.text_channels)
+        allroles = len(ctx.guild.roles)
+        # embed = discord.Embed(title=f"{ctx.guild.name}", color=0xff0000, timestamp=ctx.message.created_at)
+        # embed.description=(
+        #     f":timer: Сервер создали: **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
+        #     f":flag_white: Регион: **{ctx.guild.region}\n\n:crown:Глава сервера **{ctx.guild.owner}**\n\n"
+        #     f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
+        #     f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
+        #     f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
+        #     f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
+        #     f":keyboard: Текстовых каналов: **{alltext}**\n\n"
+        #     f":briefcase: Всего ролей: **{allroles}**\n\n"
+        #     f":slight_smile: Людей на сервере: **{ctx.guild.member_count}\n\n"
+        # )
+
+        # embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url)
+        # embed.set_thumbnail(url = self.client.user.avatar_url)
+        # embed.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+        # await ctx.send(embed=embed)
+
+        emb = discord.Embed( title = f"{ctx.guild.name}", colour = cogs_color['BOT INFO COLOR'], timestamp=ctx.message.created_at)
+        emb.add_field( name = f'Сервер был создан:', value = f'**{ctx.guild.created_at.strftime("%A, %b %#d %Y")}**', inline=True)
+        emb.add_field( name = f'Отдельное спасибо:', value = f'{settings["SPECIAL THANKS"]}', inline=True)
+        emb.add_field( name = f'Лицензия:', value = 'CC CM-KD-QV', inline=True)
+        emb.add_field( name = f'Версия:', value = 'Early Alpha', inline=True)
+        emb.add_field( name = f'Патч:', value = f'{other_settings["CURRENT PATCH"]}', inline=True)
+        emb.set_thumbnail(url = self.client.user.avatar_url)
+        emb.set_footer(text = f'{copyright_ru}', icon_url = self.client.user.avatar_url)
+        await ctx.send ( embed = emb)
+        print(f"[Logs:info] Информация о сервере была успешно выведена | {prefix}server ")          
+                
 def setup(client):
     client.add_cog(info(client))
