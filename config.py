@@ -6,6 +6,7 @@ settings = {
 	'PREFIX': '$', #bot prefix
 	'OWNER':'Toil#6505', #ur name
 	'OWNER PING':'@Toil' #dosn`t work
+ 	'SPECIAL THANKS':'Fsoky#9610', 
 }
 
 cogs_color = {
@@ -22,8 +23,8 @@ cogs_color = {
   	'CLEAR ALL EMOJI COLOR ERROR': 0xca3a3a,
   	'CLEAR EMOJI COLOR ERROR': 0xca3a3a,
   	'DELETE EMOJI COLOR ERROR': 0xca3a3a,
-    	'ADD EMOJI COLOR ERROR': 0xca3a3a,
-
+    'ADD EMOJI COLOR ERROR': 0xca3a3a,
+	'BOT INFO COLOR': 0x2285f5,
 }
 
 quick_messages = {
@@ -38,4 +39,5 @@ quick_messages = {
 
 other_settings = {
 	'COMMAND VALUE': '11',
+	'CURRENT PATCH': '0.1.4',
 }
