@@ -1,5 +1,4 @@
 # Early Alpha 0.1 - (2020-11-05)
-## Features:
 - Added command - $avatar [EU/RU]
 - Added command - $random [EU/RU]
 - Added command - $time [EU/RU]
@@ -13,7 +12,6 @@
 - Added 'OWNER PING' to the settings dictionary
 
 # Early Alpha 0.1.1 - (2020-11-06)
-## Features:
 - Added new cog - owner.py
 - Added command - $emoji [Owner Only]
 - Added command - $del_emoji [Owner Only]
@@ -29,7 +27,6 @@
 - Added 'BOT STATUS LOG' to the quick_messages dictionary
 
 # Early Alpha 0.1.2 - (2020-11-07)
-## Features:
 - Fixed a small bug in the dictionaries config
 - Added new cog - info.py
 - Added command stub $help (Just a template)
@@ -37,7 +34,6 @@
 - Added 'COMMAND VALUE' to the other_settings dictionary
 
 # Early Alpha 0.1.3 - (2020-11-08)
-## Features:
 - Added explanations for the commands $clear_all_emoji
 - Added explanations for the commands $clear_emoji
 - Added explanations for the commands $delete_emoji
@@ -46,3 +42,24 @@
 - Added 'BOT INFO COLOR' to the cogs_color dictionary
 - Added 'CURRENT PATCH' to the other_settings dictionary
 - Added 'SPECIAL THANKS' to the settings dictionary
+
+# Early Alpha 0.1.4 - (2020-11-09)
+- Small optimized code
+- Fixed a bug with the lack of russification in the command - $хелп [No arguments]
+- Deleted the variable 'unknown' from the info.py
+- Deleted the variable 'unknown_log' from the info.py
+- Fixed incorrect translation language in the error output logs for the command - $вики
+- Added 'UNKNOWN ERROR ENGLISH' to the quick_messages dictionary
+- Added new dictionary - fast_link
+- Added 'TIME MSC' to the fast_link dictionary
+- Fixed display of ValueError for the command $ранд
+- Added 'TIME CET' to the fast_link dictionary
+- Added 'THIRD PARTY SYM ERROR' to the fast_link dictionary
+- Added 'THIRD PARTY SYM ERROR EN' to the fast_link dictionary
+- Renamed 'UNKNOWN ERROR ENLISH' to 'UNKNOWN ERROR EN'
+- Added 'THIRD PARTY SYM ERROR LOG' to the fast_link dictionary
+- Fixed missing English translation in 'UNKNOWN ERROR EN'
+- Added variable 'third_sym_log' to utils.py
+- Added command - $server [EU/RU]
+- Added 'SERVER INFO COLOR' to the cogs_color dictionary
+- Small changes the text of the log output in the command $time [EU/RU]
