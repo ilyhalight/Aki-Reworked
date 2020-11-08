@@ -42,3 +42,10 @@
 - Added explanations for the commands $clear_emoji
 - Added explanations for the commands $delete_emoji
 - Added explanations for the commands $emoji
+
+# Early Alpha 0.1.4 - (2020-11-09)
+## Features:
+- Added command - $info [EU/RU]
+- Added 'BOT INFO COLOR' to the cogs_color dictionary
+- Added 'CURRENT PATCH' to the other_settings dictionary
+- Added 'SPECIAL THANKS' to the settings dictionary
