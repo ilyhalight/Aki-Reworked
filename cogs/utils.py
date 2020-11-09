@@ -58,7 +58,7 @@ class utils(commands.Cog):
         result_clock = table_clock.get(time_clock, table_clock[min(table_clock.keys(), key = lambda k: abs(k-time_clock))])
 
 
-        emb = discord.Embed( title = 'Online time', description = 'Current time by CET', colour = cogs_color['TIME COLOR'], url = fast_link['TIME CET'] )
+        emb = discord.Embed( title = 'Online time', description = 'Current time by CET', colour = cogs_color['TIME COLOR'], url = fast_link['TIME CET'])
 
         emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
         emb.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url)
@@ -85,7 +85,7 @@ class utils(commands.Cog):
                 new_page = wikipedia.page(text)
                 summ = wikipedia.summary(text)
                 emb = discord.Embed(title = new_page.title, description = summ, color = cogs_color['WIKIPEDIA COLOR'])
-                emb.set_author(name = 'More information here! Click!', url = new_page.url, icon_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png')
+                emb.set_author(name = 'More information here! Click!', url = new_page.url, icon_url = fast_link['WIKIPEDIA IMG'])
                 emb.set_footer(icon_url = self.client.user.avatar_url, text = copyright_en)
                 await ctx.send(embed = emb)
                 print(f'[Logs:utils] Информация о "{text}" была выведена | {prefix}wiki [EU]')    
@@ -166,7 +166,7 @@ class utils(commands.Cog):
                 new_page = wikipedia.page(text)
                 summ = wikipedia.summary(text)
                 emb = discord.Embed(title = new_page.title, description = summ, color = cogs_color['WIKIPEDIA COLOR'])
-                emb.set_author(name = 'Больше информации здесь! Кликай!', url = new_page.url, icon_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png')
+                emb.set_author(name = 'Больше информации здесь! Кликай!', url = new_page.url, icon_url = fast_link['WIKIPEDIA IMG'])
                 emb.set_footer(icon_url = self.client.user.avatar_url, text = copyright_ru)
                 await ctx.send(embed = emb)
                 print(f'[Logs:utils] Информация о "{text}" была выведена | {prefix}wiki [RU]')

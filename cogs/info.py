@@ -112,12 +112,12 @@ class info(commands.Cog):
 
     @commands.command(aliases = ['Info', 'info', 'Bot', 'bot', 'Bot_info', 'bot_info'])
     async def __botinfo (self, ctx):
-        emb = discord.Embed( title = f'{ctx.guild.name}', description = f'Bot information about the **{self.client.user.name}**.\n The bot was written specifically for the Fame Group project.\n More about commands - `{prefix}help`', colour = cogs_color['BOT INFO COLOR'])
-        emb.add_field( name = f'Created me:', value = f'{settings["OWNER"]}', inline=True)
-        emb.add_field( name = f'Special thanks to:', value = f'{settings["SPECIAL THANKS"]}', inline=True)
+        emb = discord.Embed( title = ctx.guild.name, description = f'Bot information about the **{self.client.user.name}**.\n The bot was written specifically for the Fame Group project.\n More about commands - `{prefix}help`', colour = cogs_color['BOT INFO COLOR'])
+        emb.add_field( name = f'Created me:', value = settings['OWNER'], inline=True)
+        emb.add_field( name = f'Special thanks to:', value = settings['SPECIAL THANKS'], inline=True)
         emb.add_field( name = f'License:', value = 'CC CM-KD-QV', inline=True)
-        emb.add_field( name = f'Version:', value = 'Early Alpha', inline=True)
-        emb.add_field( name = f'Patch:', value = f'{other_settings["CURRENT PATCH"]}', inline=True)
+        emb.add_field( name = f'Version:', value = other_settings['CURRENT VERSION'], inline=True)
+        emb.add_field( name = f'Patch:', value = other_settings['CURRENT PATCH'], inline=True)
         emb.set_thumbnail(url = self.client.user.avatar_url)
         emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
         await ctx.send ( embed = emb)
@@ -249,11 +249,11 @@ class info(commands.Cog):
 
     @commands.command(aliases = ['Инфо', 'инфо', 'Бот', 'бот', 'Бот_инфо', 'бот_инфо'])
     async def ___botinfo (self, ctx):
-        emb = discord.Embed( title = f'{ctx.guild.name}', description = f'Информация о боте **{self.client.user.name}**.\n Бот был написан специально для проекта Fame Group.\n Подробнее о командах - `{prefix}хелп`', colour = cogs_color['BOT INFO COLOR'])
+        emb = discord.Embed( title = ctx.guild.name, description = f'Информация о боте **{self.client.user.name}**.\n Бот был написан специально для проекта Fame Group.\n Подробнее о командах - `{prefix}хелп`', colour = cogs_color['BOT INFO COLOR'])
         emb.add_field( name = f'Меня создал:', value = settings['OWNER'], inline=True)
         emb.add_field( name = f'Отдельное спасибо:', value = settings['SPECIAL THANKS'], inline=True)
         emb.add_field( name = f'Лицензия:', value = 'CC CM-KD-QV', inline=True)
-        emb.add_field( name = f'Версия:', value = 'Early Alpha', inline=True)
+        emb.add_field( name = f'Версия:', value = other_settings['CURRENT VERSION'], inline=True)
         emb.add_field( name = f'Патч:', value = other_settings['CURRENT PATCH'], inline=True)
         emb.set_thumbnail(url = self.client.user.avatar_url)
         emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
@@ -266,7 +266,7 @@ class info(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
-        emb = discord.Embed(title=f"{ctx.guild.name}", color=cogs_color['SERVER INFO COLOR'], timestamp=ctx.message.created_at)
+        emb = discord.Embed(title=ctx.guild.name, color=cogs_color['SERVER INFO COLOR'], timestamp=ctx.message.created_at)
         emb.description=(
             f":timer: Сервер создали: **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
             f":flag_white: Регион: **{ctx.guild.region}\n\n:crown:Глава сервера **{ctx.guild.owner}**\n\n"
