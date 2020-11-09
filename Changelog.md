@@ -63,3 +63,6 @@
 - Added command - $server [EU/RU]
 - Added 'SERVER INFO COLOR' to the cogs_color dictionary
 - Small changes the text of the log output in the command $time [EU/RU]
+- Added 'CURRENT VERSION' to the other_settings dictionary
+- Added 'STREAM URL' to the fast_link dictionary
+- Added 'WIKIPEDIA IMG' to the fast_link dictionary
