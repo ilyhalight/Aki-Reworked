@@ -8,7 +8,6 @@ settings = {
 	'OWNER PING':'@Toil' #dosn`t work
  	'SPECIAL THANKS':'Fsoky#9610', 
 }
-
 cogs_color = {
 	'AVATAR COLOR': 0x0c0c0c,
 	'RANDOM COLOR': 0xca3a3a,
@@ -45,9 +44,12 @@ quick_messages = {
 other_settings = {
 	'COMMAND VALUE': '11',
 	'CURRENT PATCH': '0.1.4',
+	'CURRENT VERSION': 'Early Alpha',
 }
 
 fast_link = {
 	'TIME MSC': 'https://time100.ru/',
 	'TIME CET': 'https://time.is/CET',
+ 	'STREAM URL': 'https://www.twitch.tv/bratishkinoff',
+	'WIKIPEDIA IMG': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png',
 }
