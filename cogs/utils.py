@@ -95,7 +95,16 @@ class utils(commands.Cog):
                 await ctx.send(embed = emb)
                 print(f'{unknown_log} {prefix}wiki [EU]')
        
-                
+    @commands.command(aliases = ['Achievement', 'achievement', 'Mine_achievement', 'mine_achievement'])
+    async def __minecraft_achievement(self, ctx, *, name:str = None):
+        a = random.randint(1, 40)
+        name2 = name.replace(' ', '+')
+        url = f'{fast_link["MCACH"]}{a}/Achievement+Get%21/{name2}'
+        emb = discord.Embed(description = f'[Achievement!]({url})', color = cogs_color["MCACH COLOR"])
+        emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+        emb.set_image(url = url)
+        await ctx.send(embed=emb)
+        print(f'[Logs:utils] Майнкрафт достижение было успешно создано | {prefix}achievement [EN]')           
 #██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
 #██╔══██╗██║░░░██║██╔════╝██╔════╝██║██╔══██╗████╗░██║
 #██████╔╝██║░░░██║╚█████╗░╚█████╗░██║███████║██╔██╗██║
@@ -175,6 +184,18 @@ class utils(commands.Cog):
                 emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
                 print(f'{unknown_log} {prefix}wiki [RU]')            
+    
+    @commands.command(aliases = ['Ачивка', 'ачивка', 'Достижение', 'достижение', 'Майн_ачивка', 'майн_ачивка'])
+    async def ___minecraft_achievement(self, ctx, *, name:str = None):
+        a = random.randint(1, 40)
+        name2 = name.replace(' ', '+')
+        url = f'{fast_link["MCACH"]}{a}/Achievement+Get%21/{name2}'
+        emb = discord.Embed(description = f'[Достижение!]({url})', color = cogs_color["MCACH COLOR"])
+        emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+        emb.set_image(url = url)
+        await ctx.send(embed=emb)
+        print(f'[Logs:utils] Майнкрафт достижение было успешно создано | {prefix}достижение [RU]')   
+        
                   
 def setup(client):
     client.add_cog(utils(client))
