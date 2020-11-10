@@ -66,3 +66,9 @@
 - Added 'CURRENT VERSION' to the other_settings dictionary
 - Added 'STREAM URL' to the fast_link dictionary
 - Added 'WIKIPEDIA IMG' to the fast_link dictionary
+
+# Early Alpha 0.1.4.1 - (2020-11-10)
+- Fixed 'OWNER PING' to the settings dictionary
+- Added command - $achievement [EU/RU]
+- Added 'MCACH' to the fast_link dictionary
+- Added 'MCACH COLOR' to the cogs_color dictionary
