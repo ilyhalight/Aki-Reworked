@@ -8,6 +8,7 @@ settings = {
 	'OWNER PING':'@Toil' #dosn`t work
  	'SPECIAL THANKS':'Fsoky#9610', 
 }
+
 cogs_color = {
 	'AVATAR COLOR': 0x0c0c0c,
 	'RANDOM COLOR': 0xca3a3a,
@@ -25,6 +26,7 @@ cogs_color = {
     'ADD EMOJI COLOR ERROR': 0xca3a3a,
 	'BOT INFO COLOR': 0x2285f5,
  	'SERVER INFO COLOR': 0x2285f5,
+  	'MCACH COLOR': 0xe00055,
 }
 
 quick_messages = {
@@ -43,7 +45,7 @@ quick_messages = {
 
 other_settings = {
 	'COMMAND VALUE': '11',
-	'CURRENT PATCH': '0.1.4',
+	'CURRENT PATCH': '0.1.4.1',
 	'CURRENT VERSION': 'Early Alpha',
 }
 
@@ -52,4 +54,5 @@ fast_link = {
 	'TIME CET': 'https://time.is/CET',
  	'STREAM URL': 'https://www.twitch.tv/bratishkinoff',
 	'WIKIPEDIA IMG': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png',
+ 	'MCACH': 'https://minecraftskinstealer.com/achievement/',
 }
