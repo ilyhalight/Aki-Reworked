@@ -3,7 +3,7 @@ from discord.ext import commands
 import config, time, useful
 import psutil as ps
 from useful import bytes2human
-from config import cogs_color, settings, quick_messages, other_settings
+from config import cogs_color, settings, quick_messages, other_settings, emoji
 from psutil import virtual_memory
 prefix = settings['PREFIX']
 copyright_ru = quick_messages['COPYRIGHT RU']
@@ -40,10 +40,11 @@ class info(commands.Cog):
             if title == 'Info' or title == 'info' or title == 'Information' or title == 'information':
                 emb = discord.Embed(title = f'Available group commands: `Information`', description = f'**Prefix: `{prefix}`**', color = cogs_color['HELP NONE COLOR'])
                 emb.add_field(name = f'{prefix}help', value = f'Help for all teams and their categories', inline = False)
-                emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
+                emb.add_field(name = f'{prefix}bot', value = f'Bot information', inline = False)
+                emb.add_field(name = f'{prefix}server', value = f'Server Information', inline = False)
+                emb.add_field(name = f'{prefix}ping', value = f'Bot ping information', inline = False)
+                emb.add_field(name = f'{prefix}uptime', value = f'Bot uptime information', inline = False)
+                emb.add_field(name = f'{prefix}analytics', value = f'Bot resource information', inline = False)
                 emb.add_field(name = f'Attention! If you notice errors or shortcomings, please describe it in the {prefix}bugs [NO WORK] command, we will be grateful!', value = f'Total commands: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
                 emb.set_footer(text = f'{copyright_en}', icon_url = self.client.user.avatar_url)
@@ -152,44 +153,40 @@ class info(commands.Cog):
         
     @commands.command(aliases = ['Ping', 'ping', 'Pong', 'pong'])
     async def __ping(self, ctx):
-	    ping = self.client.ws.latency
+        ping = self.client.ws.latency
 
-	    ping_emoji = "🟩🔳🔳🔳🔳"
-
-	    if ping > 0.10000000000000000:
-		    ping_emoji = "🟧🟩🔳🔳🔳"
-
-	    if ping > 0.15000000000000000:
-		    ping_emoji = "🟥🟧🟩🔳🔳"
-
-	    if ping > 0.20000000000000000:
-		    ping_emoji = "🟥🟥🟧🟩🔳"
-
-	    if ping > 0.25000000000000000:
-		    ping_emoji = "🟥🟥🟥🟧🟩"
-
-	    if ping > 0.30000000000000000:
-		    ping_emoji = "🟥🟥🟥🟥🟧"
-
-	    if ping > 0.35000000000000000:
-		    ping_emoji = "🟥🟥🟥🟥🟥"
-
-	    message = await ctx.send("Please wait. . .")
-	    await message.edit(content = f"Pong! {ping_emoji} `{ping * 1000:.0f}ms` :ping_pong:")
-	    print(f"[Logs:utils] Пинг сервера был выведен | {prefix}ping [EU]")
-	    print(f"[Logs:utils] На данный момент пинг == {ping * 1000:.0f}ms | {prefix}ping [EU]")
+        ping_emoji = emoji['ping_emoji']
+        ping_list = [
+            {'ping': 0.00000000000000000, 'emoji': '🟩🔳🔳🔳🔳'},
+            {'ping': 0.10000000000000000, 'emoji': '🟧🟩🔳🔳🔳'},
+            {'ping': 0.15000000000000000, 'emoji': '🟥🟧🟩🔳🔳'},
+            {'ping': 0.20000000000000000, 'emoji': '🟥🟥🟧🟩🔳'},
+            {'ping': 0.25000000000000000, 'emoji': '🟥🟥🟥🟧🟩'},
+            {'ping': 0.30000000000000000, 'emoji': '🟥🟥🟥🟥🟧'},
+            {'ping': 0.35000000000000000, 'emoji': '🟥🟥🟥🟥🟥'}
+        ]
+        for ping_one in ping_list:
+            if ping <= ping_one["ping"]:
+                ping_emoji = ping_one["emoji"]
+                break		
+            
+        emb = discord.Embed(title = 'Ping :ping_pong:', description = f'Ping: {ping * 1000:.0f}ms\n'f'`{ping_emoji}`', color = cogs_color['PING COLOR'])
+        emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+        await ctx.send(embed = emb)	    
+        print(f"[Logs:utils] Пинг сервера был вызван | {prefix}ping [EN]")
+        print(f"[Logs:utils] На данный момент пинг == {ping * 1000:.0f}ms | {prefix}ping [EN]")
 
     
 
-    @commands.command(aliases = ['Timeup', 'timeup'])
-    async def __timeup(self, ctx):
+    @commands.command(aliases = ['Uptime', 'uptime'])
+    async def __uptime(self, ctx):
         timeUp = time.time() - startTime
         hoursUp = round(timeUp) // 3600
         timeUp %= 3600
         minutesUp = round(timeUp) // 60
         timeUp = round(timeUp % 60)
         msg = "Bot started: **{0}** hour. **{1}** min. **{2}** sec. ago :alarm_clock: ".format(hoursUp, minutesUp, timeUp) 
-        emb = discord.Embed(description = msg, color = cogs_color['TIMEUP COLOR'])
+        emb = discord.Embed(description = msg, color = cogs_color['UPTIME COLOR'])
         emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
         await ctx.send(embed = emb)
         print(f"[Logs:utils] Информация о времени запуска бота выведена | {prefix}Время_запуска [RU]")    
@@ -214,10 +211,11 @@ class info(commands.Cog):
                 ping_emoji = ping_one["emoji"]
                 break	
 
-        emb=discord.Embed(title='Loading the bot')
+        emb = discord.Embed(title = 'Loading the bot')
         emb.add_field(name = 'CPU usage', value = f'Currently in use: {ps.cpu_percent()}%', inline = True)
-        emb.add_field(name = 'RAM usage', value = f'Available: {useful.bytes2human(mem.available, "system")}\n' f'Used: {useful.bytes2human(mem.used, "system")} ({mem.percent}%)\n'f'Total: {useful.bytes2human(mem.total, "system")}',inline=True) # or {bytes2human(mem.available, 'system)} (no difference)
-        emb.add_field(name = 'Ping', value = f'Ping: {ping * 1000:.0f}ms\n'f'`{ping_emoji}`', inline=True)																	
+        emb.add_field(name = 'RAM usage', value = f'Available: {useful.bytes2human(mem.available, "system")}\n' f'Used: {useful.bytes2human(mem.used, "system")} ({mem.percent}%)\n'f'Total: {useful.bytes2human(mem.total, "system")}',inline = True) # or {bytes2human(mem.available, 'system)} (no difference)
+        emb.add_field(name = 'Ping', value = f'Ping: {ping * 1000:.0f}ms\n'f'`{ping_emoji}`', inline = True)																	
+        emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
         await ctx.send(embed = emb)
         print(f'[Logs:info] Информация о загрузке бота была выведена | {prefix}analytics [EU]')                              
 #   ██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
@@ -246,10 +244,11 @@ class info(commands.Cog):
             if title == 'Инфо' or title == 'инфо' or title == 'Информация' or title == 'информация':
                 emb = discord.Embed(title = f'Доступные команды группы: `Информация`', description = f'**Префикс: `{prefix}`**', color = cogs_color['HELP NONE COLOR'])
                 emb.add_field(name = f'{prefix}хелп', value = f'Справка по всем команда и их категориям', inline = False)
-                emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
-                emb.add_field(name = f'{prefix}none', value = f'none', inline = False)
+                emb.add_field(name = f'{prefix}бот', value = f'Информация о боте', inline = False)
+                emb.add_field(name = f'{prefix}сервер', value = f'Информация о сервере', inline = False)
+                emb.add_field(name = f'{prefix}пинг', value = f'Информация о пинге бота', inline = False)
+                emb.add_field(name = f'{prefix}время_работы', value = f'Информация о времени работы бота', inline = False)
+                emb.add_field(name = f'{prefix}ресурсы', value = f'Информация о ресурсах бота', inline = False)
                 emb.add_field(name = f'Внимание! Если заметили ошибки или недочёты, пожалуйста, опишите её в команде {prefix}bugs [NO WORK], будем благодарны!', value = f'Всего команд: {com_value}', inline = False)
                 emb.set_thumbnail(url = self.client.user.avatar_url)
                 emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
@@ -338,7 +337,7 @@ class info(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
-        emb = discord.Embed(title=ctx.guild.name, color=cogs_color['SERVER INFO COLOR'], timestamp=ctx.message.created_at)
+        emb = discord.Embed(title = ctx.guild.name, color = cogs_color['SERVER INFO COLOR'], timestamp = ctx.message.created_at)
         emb.description=(
             f":timer: Сервер создали: **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
             f":flag_white: Регион: **{ctx.guild.region}\n\n:crown:Глава сервера **{ctx.guild.owner}**\n\n"
@@ -358,53 +357,49 @@ class info(commands.Cog):
 
     @commands.command(aliases = ['Пинг', 'пинг', 'Понг', 'понг'])
     async def ___ping(self, ctx):
-	    ping = self.client.ws.latency
+        ping = self.client.ws.latency
 
-	    ping_emoji = "🟩🔳🔳🔳🔳"
+        ping_emoji = emoji['ping_emoji']
+        ping_list = [
+            {'ping': 0.00000000000000000, 'emoji': '🟩🔳🔳🔳🔳'},
+            {'ping': 0.10000000000000000, 'emoji': '🟧🟩🔳🔳🔳'},
+            {'ping': 0.15000000000000000, 'emoji': '🟥🟧🟩🔳🔳'},
+            {'ping': 0.20000000000000000, 'emoji': '🟥🟥🟧🟩🔳'},
+            {'ping': 0.25000000000000000, 'emoji': '🟥🟥🟥🟧🟩'},
+            {'ping': 0.30000000000000000, 'emoji': '🟥🟥🟥🟥🟧'},
+            {'ping': 0.35000000000000000, 'emoji': '🟥🟥🟥🟥🟥'}
+        ]
+        for ping_one in ping_list:
+            if ping <= ping_one["ping"]:
+                ping_emoji = ping_one["emoji"]
+                break		
+            
+        emb = discord.Embed(title = 'Пинг :ping_pong:', description = f'Пинг: {ping * 1000:.0f}ms\n'f'`{ping_emoji}`', color = cogs_color['PING COLOR'])
+        emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+        await ctx.send(embed = emb)	    
+        print(f"[Logs:utils] Пинг сервера был вызван | {prefix}ping [RU]")
+        print(f"[Logs:utils] На данный момент пинг == {ping * 1000:.0f}ms | {prefix}ping [RU]")
 
-	    if ping > 0.10000000000000000:
-		    ping_emoji = "🟧🟩🔳🔳🔳"
-
-	    if ping > 0.15000000000000000:
-		    ping_emoji = "🟥🟧🟩🔳🔳"
-
-	    if ping > 0.20000000000000000:
-		    ping_emoji = "🟥🟥🟧🟩🔳"
-
-	    if ping > 0.25000000000000000:
-		    ping_emoji = "🟥🟥🟥🟧🟩"
-
-	    if ping > 0.30000000000000000:
-		    ping_emoji = "🟥🟥🟥🟥🟧"
-
-	    if ping > 0.35000000000000000:
-		    ping_emoji = "🟥🟥🟥🟥🟥"
-
-	    message = await ctx.send("Пожалуйста, подождите. . .")
-	    await message.edit(content = f"Понг! {ping_emoji} `{ping * 1000:.0f}ms` :ping_pong:")
-	    print(f"[Logs:utils] Пинг сервера был выведен | {prefix}ping [RU]")
-	    print(f"[Logs:utils] На данный момент пинг == {ping * 1000:.0f}ms | {prefix}ping [RU]")
-
-    @commands.command(aliases = ['Время_запуска', 'время_запуска', 'Времязапуска', 'времязапуска'])
-    async def ___timeup(self, ctx):
+    @commands.command(aliases = ['Время_запуска', 'время_запуска', 'Времязапуска', 'времязапуска', 'Время_работы','время_работы', 'Времяработы', 'времяработы'])
+    async def ___uptime(self, ctx):
         timeUp = time.time() - startTime
         hoursUp = round(timeUp) // 3600
         timeUp %= 3600
         minutesUp = round(timeUp) // 60
         timeUp = round(timeUp % 60)
         msg = "Бот запустился: **{0}** час. **{1}** мин. **{2}** сек. назад :alarm_clock: ".format(hoursUp, minutesUp, timeUp) 
-        emb = discord.Embed(description = msg, color = cogs_color['TIMEUP COLOR'])
+        emb = discord.Embed(description = msg, color = cogs_color['UPTIME COLOR'])
         emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
         await ctx.send(embed = emb)
         print(f"[Logs:utils] Информация о времени запуска бота выведена | {prefix}Время_запуска [RU]")
 
-    @commands.command(aliases = ['Аналитика', 'аналитика', 'Загруженность', 'загруженность', 'Загруженностьбота', 'загруженностьбота', 'Загруженность_бота', 'загруженность_бота'])
+    @commands.command(aliases = ['Аналитика', 'аналитика', 'Загруженность', 'загруженность', 'Загруженностьбота', 'загруженностьбота', 'Загруженность_бота', 'загруженность_бота', 'Ресурсы', 'ресурсы', 'Ресурсыбота', 'ресурсыбота', 'Ресурсы_бота', 'ресурсы_бота'])
     async def ___analytics(self, ctx):
         mem = ps.virtual_memory()
         ping = self.client.ws.latency
 
-        ping_emoji = '🟩🔳🔳🔳🔳'
-        ping_list = [
+        ping_emoji = emoji['ping_emoji']
+        ping_list = [ 
             {'ping': 0.00000000000000000, 'emoji': '🟩🔳🔳🔳🔳'},
             {'ping': 0.10000000000000000, 'emoji': '🟧🟩🔳🔳🔳'},
             {'ping': 0.15000000000000000, 'emoji': '🟥🟧🟩🔳🔳'},
@@ -418,10 +413,11 @@ class info(commands.Cog):
                 ping_emoji = ping_one["emoji"]
                 break	
 
-        emb=discord.Embed(title='Загрузка бота')
+        emb = discord.Embed(title = 'Загрузка бота')
         emb.add_field(name = 'Использование CPU', value = f'В настоящее время используется: {ps.cpu_percent()}%', inline = True)
-        emb.add_field(name = 'Использование RAM', value = f'Доступно: {useful.bytes2human(mem.available, "system")}\n' f'Используется: {useful.bytes2human(mem.used, "system")} ({mem.percent}%)\n'f'Всего: {useful.bytes2human(mem.total, "system")}',inline=True) # or {bytes2human(mem.available, 'system)} (no difference)
-        emb.add_field(name = 'Пинг Бота', value = f'Пинг: {ping * 1000:.0f}ms\n'f'`{ping_emoji}`', inline=True)																	
+        emb.add_field(name = 'Использование RAM', value = f'Доступно: {useful.bytes2human(mem.available, "system")}\n' f'Используется: {useful.bytes2human(mem.used, "system")} ({mem.percent}%)\n'f'Всего: {useful.bytes2human(mem.total, "system")}',inline = True) # or {bytes2human(mem.available, 'system)} (no difference)
+        emb.add_field(name = 'Пинг Бота', value = f'Пинг: {ping * 1000:.0f}ms\n'f'`{ping_emoji}`', inline = True)																	
+        emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
         await ctx.send(embed = emb)
         print(f'[Logs:info] Информация о загрузке бота была выведена | {prefix}analytics [RU]')            
              
