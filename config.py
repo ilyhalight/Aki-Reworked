@@ -27,7 +27,8 @@ cogs_color = {
 	'BOT INFO COLOR': 0x2285f5,
  	'SERVER INFO COLOR': 0x2285f5,
   	'MCACH COLOR': 0xe00055,
-   	'TIMEUP COLOR': 0xca3a3a,
+   	'UPTIME COLOR': 0xca3a3a,
+    'PING COLOR': 0xca3a3a,
 }
 
 quick_messages = {
@@ -56,4 +57,8 @@ fast_link = {
  	'STREAM URL': 'https://www.twitch.tv/bratishkinoff',
 	'WIKIPEDIA IMG': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png',
  	'MCACH': 'https://minecraftskinstealer.com/achievement/',
+}
+
+emoji = {
+	'ping_emoji': '🟩🔳🔳🔳🔳'
 }
