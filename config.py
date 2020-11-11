@@ -27,6 +27,7 @@ cogs_color = {
 	'BOT INFO COLOR': 0x2285f5,
  	'SERVER INFO COLOR': 0x2285f5,
   	'MCACH COLOR': 0xe00055,
+   	'TIMEUP COLOR': 0xca3a3a,
 }
 
 quick_messages = {
