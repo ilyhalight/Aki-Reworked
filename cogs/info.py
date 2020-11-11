@@ -1,17 +1,19 @@
 import discord
 from discord.ext import commands
-import os, config
+import os, config, time
+# import psutil as ps
 from config import cogs_color, settings, quick_messages, other_settings
+# from psutil import virtual_memory
 prefix = settings['PREFIX']
 copyright_ru = quick_messages['COPYRIGHT RU']
 copyright_en = quick_messages['COPYRIGHT EN']
 com_value = other_settings['COMMAND VALUE']
-
+startTime = time.time()
 class info(commands.Cog):
     
     def __init__(self, client):
         self.client = client
-
+    
 #   ███████╗███╗░░██╗░██████╗░██╗░░░░░██╗░██████╗██╗░░██╗
 #   ██╔════╝████╗░██║██╔════╝░██║░░░░░██║██╔════╝██║░░██║
 #   █████╗░░██╔██╗██║██║░░██╗░██║░░░░░██║╚█████╗░███████║
@@ -95,7 +97,7 @@ class info(commands.Cog):
                 await ctx.send (embed = emb)
                 print(f'[Logs:info] Информация о категории "Утилиты" была выведена для пользователя {user} | {prefix}help util [EU]')                
 
-    @commands.command(aliases = ['Ahelp', 'ahelp', 'Admin_help', 'admin_help'])   
+    @commands.command(aliases = ['Ahelp', 'ahelp', 'Admin_help', 'admin_help', 'Adminhelp', 'adminhelp'])   
     @commands.is_owner() 
     async def __ahelp(self, ctx):     
             emb = discord.Embed(title = f'Available commands:', description = f'**Prefix: `{prefix}`**', color = cogs_color['AHELP COLOR'])
@@ -110,7 +112,7 @@ class info(commands.Cog):
             await ctx.send (embed = emb)
             print(f'[Logs:info] Админская сводка команд была выведена | {prefix}ahelp [EU]')                    
 
-    @commands.command(aliases = ['Info', 'info', 'Bot', 'bot', 'Bot_info', 'bot_info'])
+    @commands.command(aliases = ['Info', 'info', 'Bot', 'bot', 'Bot_info', 'bot_info', 'Botinfo', 'botinfo'])
     async def __botinfo (self, ctx):
         emb = discord.Embed( title = ctx.guild.name, description = f'Bot information about the **{self.client.user.name}**.\n The bot was written specifically for the Fame Group project.\n More about commands - `{prefix}help`', colour = cogs_color['BOT INFO COLOR'])
         emb.add_field( name = f'Created me:', value = settings['OWNER'], inline=True)
@@ -123,7 +125,7 @@ class info(commands.Cog):
         await ctx.send ( embed = emb)
         print(f"[Logs:info] Информация о боте была успешно выведена | {prefix}info [EN] ")         
         
-    @commands.command(aliases = ['Server', 'server', 'Server_info', 'server_info']) # Thanks Fsoky community
+    @commands.command(aliases = ['Server', 'server', 'Server_info', 'server_info', 'Serverinfo', 'serverinfo']) # Thanks Fsoky community
     async def __serverinfo(self, ctx):
         allchannels = len(ctx.guild.channels)
         allvoice = len(ctx.guild.voice_channels)
@@ -147,7 +149,51 @@ class info(commands.Cog):
         await ctx.send ( embed = emb)
         print(f"[Logs:info] Информация о сервере была успешно выведена | {prefix}server ")  
         
-                       
+    @commands.command(aliases = ['Ping', 'ping', 'Pong', 'pong'])
+    async def __ping(self, ctx):
+	    ping = self.client.ws.latency
+
+	    ping_emoji = "🟩🔳🔳🔳🔳"
+
+	    if ping > 0.10000000000000000:
+		    ping_emoji = "🟧🟩🔳🔳🔳"
+
+	    if ping > 0.15000000000000000:
+		    ping_emoji = "🟥🟧🟩🔳🔳"
+
+	    if ping > 0.20000000000000000:
+		    ping_emoji = "🟥🟥🟧🟩🔳"
+
+	    if ping > 0.25000000000000000:
+		    ping_emoji = "🟥🟥🟥🟧🟩"
+
+	    if ping > 0.30000000000000000:
+		    ping_emoji = "🟥🟥🟥🟥🟧"
+
+	    if ping > 0.35000000000000000:
+		    ping_emoji = "🟥🟥🟥🟥🟥"
+
+	    message = await ctx.send("Please wait. . .")
+	    await message.edit(content = f"Pong! {ping_emoji} `{ping * 1000:.0f}ms` :ping_pong:")
+	    print(f"[Logs:utils] Пинг сервера был выведен | {prefix}ping [EU]")
+	    print(f"[Logs:utils] На данный момент пинг == {ping * 1000:.0f}ms | {prefix}ping [EU]")
+
+    
+
+    @commands.command(aliases = ['Timeup', 'timeup'])
+    async def __timeup(self, ctx):
+        timeUp = time.time() - startTime
+        hoursUp = round(timeUp) // 3600
+        timeUp %= 3600
+        minutesUp = round(timeUp) // 60
+        timeUp = round(timeUp % 60)
+        msg = "Bot started: **{0}** hour. **{1}** min. **{2}** sec. ago :alarm_clock: ".format(hoursUp, minutesUp, timeUp) 
+        emb = discord.Embed(description = msg, color = cogs_color['TIMEUP COLOR'])
+        emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+        await ctx.send(embed = emb)
+        print(f"[Logs:utils] Информация о времени запуска бота выведена | {prefix}Время_запуска [RU]")    
+        
+                           
 #   ██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
 #   ██╔══██╗██║░░░██║██╔════╝██╔════╝██║██╔══██╗████╗░██║
 #   ██████╔╝██║░░░██║╚█████╗░╚█████╗░██║███████║██╔██╗██║
@@ -232,7 +278,7 @@ class info(commands.Cog):
                 await ctx.send (embed = emb)    
                 print(f'[Logs:info] Информация о категории "Утилиты" была выведена для пользователя {user} | {prefix}хелп утилиты [RU]')      
                             
-    @commands.command(aliases = ['Ахелп', 'ахелп', 'Админ_хелп', 'админ_хелп'])   
+    @commands.command(aliases = ['Ахелп', 'ахелп', 'Админ_хелп', 'админ_хелп', 'Админхелп', 'админхелп'])   
     @commands.is_owner() 
     async def ___ahelp(self, ctx):     
             emb = discord.Embed(title = f'Доступные команды:', description = f'**Префикс: `{prefix}`**', color = cogs_color['AHELP COLOR'])
@@ -247,7 +293,7 @@ class info(commands.Cog):
             await ctx.send (embed = emb)
             print(f'[Logs:info] Админская сводка команд была выведена | {prefix}ахелп [RU]')   
 
-    @commands.command(aliases = ['Инфо', 'инфо', 'Бот', 'бот', 'Бот_инфо', 'бот_инфо'])
+    @commands.command(aliases = ['Инфо', 'инфо', 'Бот', 'бот', 'Бот_инфо', 'бот_инфо', 'Ботинфо', 'ботинфо'])
     async def ___botinfo (self, ctx):
         emb = discord.Embed( title = ctx.guild.name, description = f'Информация о боте **{self.client.user.name}**.\n Бот был написан специально для проекта Fame Group.\n Подробнее о командах - `{prefix}хелп`', colour = cogs_color['BOT INFO COLOR'])
         emb.add_field( name = f'Меня создал:', value = settings['OWNER'], inline=True)
@@ -260,7 +306,7 @@ class info(commands.Cog):
         await ctx.send ( embed = emb)
         print(f"[Logs:info] Информация о боте была успешно выведена | {prefix}инфо [RU]")   
     
-    @commands.command(aliases = ['Сервер', 'сервер', 'Сервер_инфо', 'сервер_инфо']) # Thanks Fsoky community
+    @commands.command(aliases = ['Сервер', 'сервер', 'Сервер_инфо', 'сервер_инфо', 'Серверинфо', 'серверинфо']) # Thanks Fsoky community
     async def ___serverinfo(self, ctx):
         allchannels = len(ctx.guild.channels)
         allvoice = len(ctx.guild.voice_channels)
@@ -283,6 +329,110 @@ class info(commands.Cog):
         emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
         await ctx.send ( embed = emb)
         print(f"[Logs:info] Информация о сервере была успешно выведена | {prefix}server ")          
-                
+
+    @commands.command(aliases = ['Пинг', 'пинг', 'Понг', 'понг'])
+    async def ___ping(self, ctx):
+	    ping = self.client.ws.latency
+
+	    ping_emoji = "🟩🔳🔳🔳🔳"
+
+	    if ping > 0.10000000000000000:
+		    ping_emoji = "🟧🟩🔳🔳🔳"
+
+	    if ping > 0.15000000000000000:
+		    ping_emoji = "🟥🟧🟩🔳🔳"
+
+	    if ping > 0.20000000000000000:
+		    ping_emoji = "🟥🟥🟧🟩🔳"
+
+	    if ping > 0.25000000000000000:
+		    ping_emoji = "🟥🟥🟥🟧🟩"
+
+	    if ping > 0.30000000000000000:
+		    ping_emoji = "🟥🟥🟥🟥🟧"
+
+	    if ping > 0.35000000000000000:
+		    ping_emoji = "🟥🟥🟥🟥🟥"
+
+	    message = await ctx.send("Пожалуйста, подождите. . .")
+	    await message.edit(content = f"Понг! {ping_emoji} `{ping * 1000:.0f}ms` :ping_pong:")
+	    print(f"[Logs:utils] Пинг сервера был выведен | {prefix}ping [RU]")
+	    print(f"[Logs:utils] На данный момент пинг == {ping * 1000:.0f}ms | {prefix}ping [RU]")
+
+    
+
+    @commands.command(aliases = ['Время_запуска', 'время_запуска', 'Времязапуска', 'времязапуска'])
+    async def ___timeup(self, ctx):
+        timeUp = time.time() - startTime
+        hoursUp = round(timeUp) // 3600
+        timeUp %= 3600
+        minutesUp = round(timeUp) // 60
+        timeUp = round(timeUp % 60)
+        msg = "Бот запустился: **{0}** час. **{1}** мин. **{2}** сек. назад :alarm_clock: ".format(hoursUp, minutesUp, timeUp) 
+        emb = discord.Embed(description = msg, color = cogs_color['TIMEUP COLOR'])
+        emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+        await ctx.send(embed = emb)
+        print(f"[Logs:utils] Информация о времени запуска бота выведена | {prefix}Время_запуска [RU]")
+
+
+    # async def bytes2human(self, number, typer=None):
+    #     # Пример Работы Этой Функции перевода чисел:
+    #     # >> bytes2human(10000)
+    #     # >> '9.8K'
+    #     # >> bytes2human(100001221)
+    #     # >> '95.4M'
+
+    #     if typer == "system":
+    #         symbols = ('KБ', 'МБ', 'ГБ', 'TБ', 'ПБ', 'ЭБ', 'ЗБ', 'ИБ')  # Для перевода в Килобайты, Мегабайты, Гигобайты, Террабайты, Петабайты, Петабайты, Эксабайты, Зеттабайты, Йоттабайты
+    #     else:
+    #         symbols = ('K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y')  # Для перевода в обычные цифры (10k, 10MM)
+
+    #     prefix = {}
+
+    #     for i, s in enumerate(symbols):
+    #         prefix[s] = 1 << (i + 1) * 10
+
+    #     for s in reversed(symbols):
+    #         if number >= prefix[s]:
+    #             value = float(number) / prefix[s]
+    #             return '%.1f%s' % (value, s)
+
+    #     return f"{number}B"
+
+    # @commands.command(aliases = ['analytics', 'Analytics', 'ANALYTICS', 'aNALYTICS', 'Аналитика', 'аналитика', 'АНАЛИТИКА', 'аНАЛИТИКА'])
+    # async def __analytics(self, ctx):
+    #     mem = ps.virtual_memory()
+    #     ping = self.client.ws.latency
+
+    #     ping_emoji = "🟩🔳🔳🔳🔳"
+    #     ping_list = [
+    #         {"ping": 0.00000000000000000, "emoji": "🟩🔳🔳🔳🔳"},
+    #         {"ping": 0.10000000000000000, "emoji": "🟧🟩🔳🔳🔳"},
+    #         {"ping": 0.15000000000000000, "emoji": "🟥🟧🟩🔳🔳"},
+    #         {"ping": 0.20000000000000000, "emoji": "🟥🟥🟧🟩🔳"},
+    #         {"ping": 0.25000000000000000, "emoji": "🟥🟥🟥🟧🟩"},
+    #         {"ping": 0.30000000000000000, "emoji": "🟥🟥🟥🟥🟧"},
+    #         {"ping": 0.35000000000000000, "emoji": "🟥🟥🟥🟥🟥"}
+    #     ]
+    #     for ping_one in ping_list:
+    #         if ping <= ping_one["ping"]:
+    #             ping_emoji = ping_one["emoji"]
+    #             break	
+
+    #     emb=discord.Embed(title="Нагрузка бота")
+    #     emb.add_field(name='Использование CPU',
+    #                         value=f'В настоящее время используется: {ps.cpu_percent()}%',
+    #                         inline=True)
+    #     emb.add_field( name = 'Использование RAM', value = f'Доступно: {bytes2human(mem.available, "system")}\n'
+    #                                 f'Используется: {bytes2human(mem.used, "system")} ({mem.percent}%)\n'
+    #                                 f'Всего: {bytes2human(mem.total, "system")}',inline=True)
+    #     emb.add_field(name='Пинг Бота',
+    #                         value=f'Пинг: {ping * 1000:.0f}ms\n'
+    #                             f'`{ping_emoji}`',
+    #                         inline=True)																	
+    #     emb.set_footer( icon_url = ctx.guild.owner.avatar_url, text = f"{settings['CREATOR NAME']} © Copyright 2020 | Все права защищены")
+    #     await ctx.send( embed = emb )
+    #     print(f"[Logs:info] Информация о нагрузке была выведена | {prefix}analytics")            
+             
 def setup(client):
     client.add_cog(info(client))
