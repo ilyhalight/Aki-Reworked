@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
-import os, random, datetime, clock, config, wikipedia, pytz
+import random, datetime, config, wikipedia, pytz, useful
+from useful import diff
 from config import cogs_color, settings, quick_messages, other_settings, fast_link
 prefix = settings['PREFIX']
 unknown_log = quick_messages['UNKNOWN ERROR LOG']
@@ -54,7 +55,7 @@ class utils(commands.Cog):
         time_clock = float(datetime.datetime.strptime(time_clock, '%H%M').strftime('%I.%M').lower())
         print(f'[Logs:utils] Часы были успешно выведено | {prefix}time [EU]')
 
-        table_clock = clock.diff
+        table_clock = useful.diff # or table_clock = diff (no difference)
         result_clock = table_clock.get(time_clock, table_clock[min(table_clock.keys(), key = lambda k: abs(k-time_clock))])
 
 
@@ -144,7 +145,7 @@ class utils(commands.Cog):
         time_clock = float(datetime.datetime.strptime(time_clock, '%H%M').strftime('%I.%M').lower())
         print(f'[Logs:utils] Часы были успешно выведены | {prefix}time [RU]')
 
-        table_clock = clock.diff
+        table_clock = useful.diff # or table_clock = diff (no difference)
         result_clock = table_clock.get(time_clock, table_clock[min(table_clock.keys(), key=lambda k: abs(k-time_clock))])
 
 

@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import os, config
+import config
 from config import cogs_color, settings, quick_messages, other_settings
 prefix = settings['PREFIX']
 unknown_log = quick_messages['UNKNOWN ERROR LOG']
@@ -15,7 +15,7 @@ class owner(commands.Cog):
     @commands.command(aliases = ['Test', 'test', 'Тест', 'тест'])
     @commands.is_owner()
     async def __test(self, ctx):
-        await ctx.send("Hello, World")
+        await ctx.send(f'Hello, World\n {settings["OWNER PING"]}')
         
     @commands.command(aliases = ['Emoji', 'emoji', 'Reaction', 'reaction', 'Эмодзи', 'эмодзи', 'Эмоджи', 'эмоджи', 'Реакция', 'реакция'])
     @commands.is_owner()

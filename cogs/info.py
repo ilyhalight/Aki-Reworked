@@ -1,9 +1,10 @@
 import discord
 from discord.ext import commands
-import os, config, time
-# import psutil as ps
+import config, time, useful
+import psutil as ps
+from useful import bytes2human
 from config import cogs_color, settings, quick_messages, other_settings
-# from psutil import virtual_memory
+from psutil import virtual_memory
 prefix = settings['PREFIX']
 copyright_ru = quick_messages['COPYRIGHT RU']
 copyright_en = quick_messages['COPYRIGHT EN']
@@ -193,7 +194,32 @@ class info(commands.Cog):
         await ctx.send(embed = emb)
         print(f"[Logs:utils] Информация о времени запуска бота выведена | {prefix}Время_запуска [RU]")    
         
-                           
+    @commands.command(aliases = ['Analytics', 'analytics'])
+    async def __analytics(self, ctx):
+        mem = ps.virtual_memory()
+        ping = self.client.ws.latency
+
+        ping_emoji = '🟩🔳🔳🔳🔳'
+        ping_list = [
+            {'ping': 0.00000000000000000, 'emoji': '🟩🔳🔳🔳🔳'},
+            {'ping': 0.10000000000000000, 'emoji': '🟧🟩🔳🔳🔳'},
+            {'ping': 0.15000000000000000, 'emoji': '🟥🟧🟩🔳🔳'},
+            {'ping': 0.20000000000000000, 'emoji': '🟥🟥🟧🟩🔳'},
+            {'ping': 0.25000000000000000, 'emoji': '🟥🟥🟥🟧🟩'},
+            {'ping': 0.30000000000000000, 'emoji': '🟥🟥🟥🟥🟧'},
+            {'ping': 0.35000000000000000, 'emoji': '🟥🟥🟥🟥🟥'}
+        ]
+        for ping_one in ping_list:
+            if ping <= ping_one["ping"]:
+                ping_emoji = ping_one["emoji"]
+                break	
+
+        emb=discord.Embed(title='Loading the bot')
+        emb.add_field(name = 'CPU usage', value = f'Currently in use: {ps.cpu_percent()}%', inline = True)
+        emb.add_field(name = 'RAM usage', value = f'Available: {useful.bytes2human(mem.available, "system")}\n' f'Used: {useful.bytes2human(mem.used, "system")} ({mem.percent}%)\n'f'Total: {useful.bytes2human(mem.total, "system")}',inline=True) # or {bytes2human(mem.available, 'system)} (no difference)
+        emb.add_field(name = 'Ping', value = f'Ping: {ping * 1000:.0f}ms\n'f'`{ping_emoji}`', inline=True)																	
+        await ctx.send(embed = emb)
+        print(f'[Logs:info] Информация о загрузке бота была выведена | {prefix}analytics [EU]')                              
 #   ██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
 #   ██╔══██╗██║░░░██║██╔════╝██╔════╝██║██╔══██╗████╗░██║
 #   ██████╔╝██║░░░██║╚█████╗░╚█████╗░██║███████║██╔██╗██║
@@ -359,8 +385,6 @@ class info(commands.Cog):
 	    print(f"[Logs:utils] Пинг сервера был выведен | {prefix}ping [RU]")
 	    print(f"[Logs:utils] На данный момент пинг == {ping * 1000:.0f}ms | {prefix}ping [RU]")
 
-    
-
     @commands.command(aliases = ['Время_запуска', 'время_запуска', 'Времязапуска', 'времязапуска'])
     async def ___timeup(self, ctx):
         timeUp = time.time() - startTime
@@ -374,65 +398,32 @@ class info(commands.Cog):
         await ctx.send(embed = emb)
         print(f"[Logs:utils] Информация о времени запуска бота выведена | {prefix}Время_запуска [RU]")
 
+    @commands.command(aliases = ['Аналитика', 'аналитика', 'Загруженность', 'загруженность', 'Загруженностьбота', 'загруженностьбота', 'Загруженность_бота', 'загруженность_бота'])
+    async def ___analytics(self, ctx):
+        mem = ps.virtual_memory()
+        ping = self.client.ws.latency
 
-    # async def bytes2human(self, number, typer=None):
-    #     # Пример Работы Этой Функции перевода чисел:
-    #     # >> bytes2human(10000)
-    #     # >> '9.8K'
-    #     # >> bytes2human(100001221)
-    #     # >> '95.4M'
+        ping_emoji = '🟩🔳🔳🔳🔳'
+        ping_list = [
+            {'ping': 0.00000000000000000, 'emoji': '🟩🔳🔳🔳🔳'},
+            {'ping': 0.10000000000000000, 'emoji': '🟧🟩🔳🔳🔳'},
+            {'ping': 0.15000000000000000, 'emoji': '🟥🟧🟩🔳🔳'},
+            {'ping': 0.20000000000000000, 'emoji': '🟥🟥🟧🟩🔳'},
+            {'ping': 0.25000000000000000, 'emoji': '🟥🟥🟥🟧🟩'},
+            {'ping': 0.30000000000000000, 'emoji': '🟥🟥🟥🟥🟧'},
+            {'ping': 0.35000000000000000, 'emoji': '🟥🟥🟥🟥🟥'}
+        ]
+        for ping_one in ping_list:
+            if ping <= ping_one["ping"]:
+                ping_emoji = ping_one["emoji"]
+                break	
 
-    #     if typer == "system":
-    #         symbols = ('KБ', 'МБ', 'ГБ', 'TБ', 'ПБ', 'ЭБ', 'ЗБ', 'ИБ')  # Для перевода в Килобайты, Мегабайты, Гигобайты, Террабайты, Петабайты, Петабайты, Эксабайты, Зеттабайты, Йоттабайты
-    #     else:
-    #         symbols = ('K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y')  # Для перевода в обычные цифры (10k, 10MM)
-
-    #     prefix = {}
-
-    #     for i, s in enumerate(symbols):
-    #         prefix[s] = 1 << (i + 1) * 10
-
-    #     for s in reversed(symbols):
-    #         if number >= prefix[s]:
-    #             value = float(number) / prefix[s]
-    #             return '%.1f%s' % (value, s)
-
-    #     return f"{number}B"
-
-    # @commands.command(aliases = ['analytics', 'Analytics', 'ANALYTICS', 'aNALYTICS', 'Аналитика', 'аналитика', 'АНАЛИТИКА', 'аНАЛИТИКА'])
-    # async def __analytics(self, ctx):
-    #     mem = ps.virtual_memory()
-    #     ping = self.client.ws.latency
-
-    #     ping_emoji = "🟩🔳🔳🔳🔳"
-    #     ping_list = [
-    #         {"ping": 0.00000000000000000, "emoji": "🟩🔳🔳🔳🔳"},
-    #         {"ping": 0.10000000000000000, "emoji": "🟧🟩🔳🔳🔳"},
-    #         {"ping": 0.15000000000000000, "emoji": "🟥🟧🟩🔳🔳"},
-    #         {"ping": 0.20000000000000000, "emoji": "🟥🟥🟧🟩🔳"},
-    #         {"ping": 0.25000000000000000, "emoji": "🟥🟥🟥🟧🟩"},
-    #         {"ping": 0.30000000000000000, "emoji": "🟥🟥🟥🟥🟧"},
-    #         {"ping": 0.35000000000000000, "emoji": "🟥🟥🟥🟥🟥"}
-    #     ]
-    #     for ping_one in ping_list:
-    #         if ping <= ping_one["ping"]:
-    #             ping_emoji = ping_one["emoji"]
-    #             break	
-
-    #     emb=discord.Embed(title="Нагрузка бота")
-    #     emb.add_field(name='Использование CPU',
-    #                         value=f'В настоящее время используется: {ps.cpu_percent()}%',
-    #                         inline=True)
-    #     emb.add_field( name = 'Использование RAM', value = f'Доступно: {bytes2human(mem.available, "system")}\n'
-    #                                 f'Используется: {bytes2human(mem.used, "system")} ({mem.percent}%)\n'
-    #                                 f'Всего: {bytes2human(mem.total, "system")}',inline=True)
-    #     emb.add_field(name='Пинг Бота',
-    #                         value=f'Пинг: {ping * 1000:.0f}ms\n'
-    #                             f'`{ping_emoji}`',
-    #                         inline=True)																	
-    #     emb.set_footer( icon_url = ctx.guild.owner.avatar_url, text = f"{settings['CREATOR NAME']} © Copyright 2020 | Все права защищены")
-    #     await ctx.send( embed = emb )
-    #     print(f"[Logs:info] Информация о нагрузке была выведена | {prefix}analytics")            
+        emb=discord.Embed(title='Загрузка бота')
+        emb.add_field(name = 'Использование CPU', value = f'В настоящее время используется: {ps.cpu_percent()}%', inline = True)
+        emb.add_field(name = 'Использование RAM', value = f'Доступно: {useful.bytes2human(mem.available, "system")}\n' f'Используется: {useful.bytes2human(mem.used, "system")} ({mem.percent}%)\n'f'Всего: {useful.bytes2human(mem.total, "system")}',inline=True) # or {bytes2human(mem.available, 'system)} (no difference)
+        emb.add_field(name = 'Пинг Бота', value = f'Пинг: {ping * 1000:.0f}ms\n'f'`{ping_emoji}`', inline=True)																	
+        await ctx.send(embed = emb)
+        print(f'[Logs:info] Информация о загрузке бота была выведена | {prefix}analytics [RU]')            
              
 def setup(client):
     client.add_cog(info(client))
