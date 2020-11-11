@@ -72,3 +72,12 @@
 - Added command - $achievement [EU/RU]
 - Added 'MCACH' to the fast_link dictionary
 - Added 'MCACH COLOR' to the cogs_color dictionary
+
+
+Early Alpha 0.1.5 - (2020-11-11)
+- Added command - $ping [EU/RU]
+- Added command - $timeup [EU/RU]
+- Added 'TIMEUP COLOR' to the cogs_color dictionary
+- Added an alternative command for $bot [EU/RU]
+- Added an alternative command for $server [EU/RU]
+-  Added an alternative command for $ahelp [EU/RU]
