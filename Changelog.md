@@ -81,3 +81,10 @@
 - Added an alternative command for $bot [EU/RU]
 - Added an alternative command for $server [EU/RU]
 -  Added an alternative command for $ahelp [EU/RU]
+
+# Early Alpha 0.1.6 - (2020-11-12)
+- Created a new python module - useful
+- Moved functionality from the "clock" module to the "useful" module
+- Removed python module - clock
+- Removed unnecessary module imports in main.py, owner.py, utils.py, info.py
+- Added command - $analytics [EU/RU]
