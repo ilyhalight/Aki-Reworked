@@ -26,7 +26,7 @@ class owner(commands.Cog):
             await message.add_reaction(reaction) # Добавить реакцию к сообщению
             print(f"[Logs:owner] К сообщению [{id}] была добавлена эмоджи | {prefix}emoji")
         else:
-            emb = discord.Embed(description = f'Пример: `{prefix}эмоджи <id сообщения> <id эмоджи>` - Добавить эмоджи к сообщению.', color = cogs_color['ADD EMOJI COLOR ERROR'])
+            emb = discord.Embed(description = f'Пример: `{prefix}эмоджи <id сообщения> <id эмоджи>` - Добавить эмоджи к сообщению.', color = cogs_color['ADD EMOJI COLOR EXAMPLE'])
             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}emoji')
@@ -41,7 +41,7 @@ class owner(commands.Cog):
             await message.remove_reaction(reaction, user) # Удалить конкретную реакцию, конкретного пользователя в кокретном сообщение
             print(f"[Logs:owner] Отправленное пользователем {user} эмоджи было удалено для сообщения - [{id}] | {prefix}delete_emoji")
         else:
-            emb = discord.Embed(description = f'Пример: `{prefix}удалить_эмодзи <id сообщения> <id эмоджи> [@Пользователь]` - Стереть конкретные эмоджи с сообщения.', color = cogs_color['DELETE EMOJI COLOR ERROR'])
+            emb = discord.Embed(description = f'Пример: `{prefix}удалить_эмодзи <id сообщения> <id эмоджи> [@Пользователь]` - Удалить конкретные эмоджи пользователя в сообщение.', color = cogs_color['DELETE EMOJI COLOR EXAMPLE'])
             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}delete_emoji')      
@@ -55,7 +55,7 @@ class owner(commands.Cog):
             await message.clear_reaction(reaction) # Удалить определенные реакции к сообщению
             print(f"[Logs:owner] В сообщение [{id}] были очищенны определенные эмоджи | {prefix}clear_emoji")
         else:
-            emb = discord.Embed(description = f'Пример: `{prefix}Стереть_эмодзи <id сообщения> <id эмоджи>` - Стереть конкретные эмоджи с сообщения.', color = cogs_color['CLEAR EMOJI COLOR ERROR'])
+            emb = discord.Embed(description = f'Пример: `{prefix}Стереть_эмодзи <id сообщения> <id эмоджи>` - Стереть конкретные эмоджи в сообщение.', color = cogs_color['CLEAR EMOJI COLOR EXAMPLE'])
             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}clear_emoji')   
@@ -69,7 +69,7 @@ class owner(commands.Cog):
             await message.clear_reactions() # Очистить все реакции к сообщению
             print(f"[Logs:owner] В сообщение [{id}] были очищенны все эмоджи | {prefix}clear_all_emoji")
         else:
-            emb = discord.Embed(description = f'Пример: `{prefix}Стереть_все_эмодзи <id сообщения>` - Стереть абсолютно все эмоджи с сообщения.', color = cogs_color['CLEAR ALL EMOJI COLOR ERROR'])
+            emb = discord.Embed(description = f'Пример: `{prefix}Стереть_все_эмодзи <id сообщения>` - Стереть абсолютно все эмоджи в сообщение.', color = cogs_color['CLEAR ALL EMOJI COLOR EXAMPLE'])
             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}clear_all_emoji')      
@@ -78,7 +78,7 @@ class owner(commands.Cog):
     @commands.is_owner()
     async def __botstatus(self, ctx, active = None, *, arg = None): 
         if active == None or arg == None:
-            emb = discord.Embed(description = f'Пример: `{prefix}Бот_статус Стримит $help` - Статус бота будет изменен на: "cтримит $help".', color = cogs_color['BOT COLOR ARG ERROR'])
+            emb = discord.Embed(description = f'Пример: `{prefix}Бот_статус Стримит $help` - Статус бота будет изменен на: "cтримит $help".', color = cogs_color['BOT COLOR EXAMPLE'])
             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}bot_status')

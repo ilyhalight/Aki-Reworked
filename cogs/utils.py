@@ -105,7 +105,157 @@ class utils(commands.Cog):
         emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
         emb.set_image(url = url)
         await ctx.send(embed=emb)
-        print(f'[Logs:utils] Майнкрафт достижение было успешно создано | {prefix}achievement [EN]')           
+        print(f'[Logs:utils] Майнкрафт достижение было успешно создано | {prefix}achievement [EN]')          
+        
+        
+    @commands.command(aliases = ['Reverse', 'reverse'])
+    async def __reverse(self, ctx, *, text: str):
+        t_rev = text[::-1].replace("@", "@\u200B").replace("&", "&\u200B")
+        emb = discord.Embed(title = 'Reverse text:', description = t_rev, color = cogs_color["REVERSE COLOR"])
+        emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+        await ctx.send(embed=emb)
+        print(f"[Logs:utils] Команда была успешно использована | {prefix}reverse [EU]")    
+        
+    @commands.command(aliases = ['Forgot_layout', 'forgot_layout', 'Forgotlayout', 'forgotlayout', 'Ru_layout', 'ru_layout', 'Rulayout', 'rulayout'])
+    async def __Forgot_layout(self, ctx, *, message = None):
+        a = {'q':'й', 
+             'w':'ц', 
+             'e':'у', 
+             'r':'к', 
+             't':'е', 
+             'y':'н', 
+             'u':'г', 
+             'i':'ш', 
+             'o':'щ', 
+             'p':'з', 
+             '[':'х', 
+                '{':'х','}':'ъ',
+             ']':'ъ',
+             'a':'ф',
+             's':'ы',
+             'd':'в',
+             'f':'а',
+             'g':'п',
+             'h':'р',
+             'j':'о',
+             'k':'л',
+             'l':'д',
+             ':':'ж',
+             ';':'ж',
+             '"':'э',
+             "'":'э',
+             'z':'я',
+             'x':'ч',
+             'c':'с',
+             'v':'м',
+             'b':'и',
+             'n':'т',
+             'm':'ь',
+             '<':'б',
+             ',':'б',
+             '>':'ю',
+             '.':'ю',
+             '?':',',
+             '/':'.',
+             '`':'ё',
+             '~':'ё',
+             ' ':' ',
+             '!':'!'}
+        if message == None:
+            emb = discord.Embed(description = f'Example: `{prefix}ru_layout ghbdtn` - A message will be displayed привет.', color = cogs_color['LAYOUT COLOR EXAMPLE'])
+            emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+            await ctx.send(embed = emb)
+            print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}ru_layout [EU]')
+        else:
+            itog = ""
+            errors = ""
+            for i in message:
+                if i.lower() in a:
+                    itog += a[i.lower()]
+                else:
+                    errors += f"`{i}` "
+            if len(errors) <= 0:
+                 errors_itog = ""
+            else:
+                errors_itog = f"\nНепереведенные символы: {errors}"
+                print(f"[Logs:utils] [Warning] Перевод содержит непереведенные символы | {prefix}ru_layout [EU]")
+
+            if len(itog) <= 0:
+                emb = discord.Embed(description = 'Failed to translate message! :pencil:\nPerhaps you are trying to translate transliteration into a Russian word', color = cogs_color['LAYOUT COLOR ERROR'])
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f"[Logs:utils] [Error] Не удалось перевести сообщение | {prefix}ru_layout [EU]")
+            else:
+                itog_new = f"Translation: {itog}"   
+                emb = discord.Embed(description = f'{itog_new}{errors_itog}', color = cogs_color['LAYOUT COLOR EXAMPLE'])
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}ru_layout [EU]")
+                  
+    @commands.command(aliases = ['Translit', 'translit'])
+    async def __translit(self, ctx, *, message = None):
+        a = {
+            'q':'ку', 
+            'w':'в', 
+            'e':'е', 
+            'r':'р', 
+            't':'т', 
+            'y':'й', 
+            'u':'у', 
+            'i':'и', 
+            'o':'о', 
+            'p':'п', 
+            'a':'а',
+            's':'с',
+            'd':'д',
+            'f':'ф',
+            'g':'г',
+            'h':'х',
+            'j':'ж',
+            'k':'к',
+            'l':'л',
+            'z':'з',
+            'x':'х',
+            'c':'с',
+            'v':'в',
+            'b':'б',
+            'n':'н',
+            'm':'м',
+            ',':',',
+            ' ':' ',
+            '!':'!'}      
+        if message == None:
+            emb = discord.Embed(description = f'Example: `{prefix}translit privet` - A message will be displayed привет.', color = cogs_color['TRANSLIT COLOR EXAMPLE'])
+            emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+            await ctx.send(embed = emb)
+            print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}транслит [RU]')
+        else:
+            itog = ""
+            errors = ""
+            for i in message:
+                if i.lower() in a:
+                    itog += a[i.lower()]
+                else:
+                    errors += f"`{i}` "
+            if len(errors) <= 0:
+                 errors_itog = ""
+            else:
+                errors_itog = f"\nUntranslated characters: {errors}"
+                print(f"[Logs:utils] [Warning] Перевод содержит непереведенные символы | {prefix}транслит [RU]")
+
+            if len(itog) <= 0:
+                emb = discord.Embed(description = 'Failed to translate message! :pencil:\nPerhaps you are trying to translate a Russian word into transliteration', color = cogs_color['TRANSLIT COLOR ERROR'])
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f"[Logs:utils] [Error] Не удалось перевести сообщение | {prefix}транслит [RU]")
+            else:
+                itog_new = f"Translation: {itog}"
+                emb = discord.Embed(description = f'{itog_new}{errors_itog}', color = cogs_color['LAYOUT COLOR EXAMPLE'])
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb) 
+                print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}ру_раскладка [RU]")      
+                
+                     
 #██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
 #██╔══██╗██║░░░██║██╔════╝██╔════╝██║██╔══██╗████╗░██║
 #██████╔╝██║░░░██║╚█████╗░╚█████╗░██║███████║██╔██╗██║
@@ -197,6 +347,154 @@ class utils(commands.Cog):
         await ctx.send(embed=emb)
         print(f'[Logs:utils] Майнкрафт достижение было успешно создано | {prefix}достижение [RU]')   
         
+    @commands.command(aliases = ['Реверс', 'реверс', 'Обратный', 'обратный'])
+    async def ___reverse(self, ctx, *, text: str):
+        t_rev = text[::-1].replace("@", "@\u200B").replace("&", "&\u200B")
+        emb = discord.Embed(title = 'Обратный текст:', description = t_rev, color = cogs_color["REVERSE COLOR"])
+        emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+        await ctx.send(embed=emb)
+        print(f"[Logs:utils] Текст был успешно отражен в обратную сторону | {prefix}реверс [RU]")   
+    
+    @commands.command(aliases = ['Забыл_раскладку', 'забыл_раскладку', 'Забылраскладку', 'забылраскладку', 'Ру_раскладка', 'ру_раскладка', 'Рураскладка', 'рураскладка'])
+    async def ___Forgot_layout(self, ctx, *, message = None):
+        a = {'q':'й', 
+             'w':'ц', 
+             'e':'у', 
+             'r':'к', 
+             't':'е', 
+             'y':'н', 
+             'u':'г', 
+             'i':'ш', 
+             'o':'щ', 
+             'p':'з', 
+             '[':'х', 
+                '{':'х','}':'ъ',
+             ']':'ъ',
+             'a':'ф',
+             's':'ы',
+             'd':'в',
+             'f':'а',
+             'g':'п',
+             'h':'р',
+             'j':'о',
+             'k':'л',
+             'l':'д',
+             ':':'ж',
+             ';':'ж',
+             '"':'э',
+             "'":'э',
+             'z':'я',
+             'x':'ч',
+             'c':'с',
+             'v':'м',
+             'b':'и',
+             'n':'т',
+             'm':'ь',
+             '<':'б',
+             ',':'б',
+             '>':'ю',
+             '.':'ю',
+             '?':',',
+             '/':'.',
+             '`':'ё',
+             '~':'ё',
+             ' ':' ',
+             '!':'!'}
+        if message == None:
+            emb = discord.Embed(description = f'Пример: `{prefix}ру_раскладка ghbdtn` - Будет выведено сообщение привет.', color = cogs_color['LAYOUT COLOR EXAMPLE'])
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+            await ctx.send(embed = emb)
+            print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}ру_раскладка [RU]')
+        else:
+            itog = ""
+            errors = ""
+            for i in message:
+                if i.lower() in a:
+                    itog += a[i.lower()]
+                else:
+                    errors += f"`{i}` "
+            if len(errors) <= 0:
+                 errors_itog = ""
+            else:
+                errors_itog = f"\nНепереведенные символы: {errors}"
+                print(f"[Logs:utils] [Warning] Перевод содержит непереведенные символы | {prefix}ру_раскладка [RU]")
+
+            if len(itog) <= 0:
+                emb = discord.Embed(description = 'Не удалось перевести сообщение! :pencil:\nВозможно, вы пытаетесь перевести транслит в русское слово', color = cogs_color['LAYOUT COLOR ERROR'])
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f"[Logs:utils] [Error] Не удалось перевести сообщение | {prefix}ру_раскладка [RU]")
+            else:
+                itog_new = f"Перевод: {itog}"   
+                emb = discord.Embed(description = f'{itog_new}{errors_itog}', color = cogs_color['LAYOUT COLOR EXAMPLE'])
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}ру_раскладка [RU]")
                   
+    @commands.command(aliases = ['Транслит', 'транслит'])
+    async def ___translit(self, ctx, *, message = None):
+        a = {
+            'q':'ку', 
+            'w':'в', 
+            'e':'е', 
+            'r':'р', 
+            't':'т', 
+            'y':'й', 
+            'u':'у', 
+            'i':'и', 
+            'o':'о', 
+            'p':'п', 
+            'a':'а',
+            's':'с',
+            'd':'д',
+            'f':'ф',
+            'g':'г',
+            'h':'х',
+            'j':'ж',
+            'k':'к',
+            'l':'л',
+            'z':'з',
+            'x':'х',
+            'c':'с',
+            'v':'в',
+            'b':'б',
+            'n':'н',
+            'm':'м',
+            ',':',',
+            ' ':' ',
+            '!':'!'}      
+        if message == None:
+            emb = discord.Embed(description = f'Пример: `{prefix}транслит privet` - Будет выведено сообщение привет.', color = cogs_color['TRANSLIT COLOR EXAMPLE'])
+            emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+            await ctx.send(embed = emb)
+            print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}транслит [RU]')
+        else:
+            itog = ""
+            errors = ""
+            for i in message:
+                if i.lower() in a:
+                    itog += a[i.lower()]
+                else:
+                    errors += f"`{i}` "
+            if len(errors) <= 0:
+                 errors_itog = ""
+            else:
+                errors_itog = f"\nНепереведенные символы: {errors}"
+                print(f"[Logs:utils] [Warning] Перевод содержит непереведенные символы | {prefix}транслит [RU]")
+
+            if len(itog) <= 0:
+                #itog_new = "Перевода нет!"
+                emb = discord.Embed(description = 'Не удалось перевести сообщение! :pencil:\nВозможно, вы пытаетесь перевести русское слово в транслит', color = cogs_color['TRANSLIT COLOR ERROR'])
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f"[Logs:utils] [Error] Не удалось перевести сообщение | {prefix}транслит [RU]")
+            else:
+                itog_new = f"Перевод: {itog}"
+                emb = discord.Embed(description = f'{itog_new}{errors_itog}', color = cogs_color['LAYOUT COLOR EXAMPLE'])
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb) 
+                print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}ру_раскладка [RU]")   
+                
+                         
 def setup(client):
     client.add_cog(utils(client))

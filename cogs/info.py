@@ -399,7 +399,7 @@ class info(commands.Cog):
         ping = self.client.ws.latency
 
         ping_emoji = emoji['ping_emoji']
-        ping_list = [ 
+        ping_list = [ # ПЕРЕНЕСИ МЕНЯ В ЮЗЕФУЛ.ПУ
             {'ping': 0.00000000000000000, 'emoji': '🟩🔳🔳🔳🔳'},
             {'ping': 0.10000000000000000, 'emoji': '🟧🟩🔳🔳🔳'},
             {'ping': 0.15000000000000000, 'emoji': '🟥🟧🟩🔳🔳'},
