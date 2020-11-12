@@ -94,3 +94,19 @@ Early Alpha 0.1.6 - (2020-11-12)
 - Corrected command name from $timeup to $uptime
 - Renamed 'TIMEUP COLOR' to 'UPTIME COLOR' to the cogs_color dictionary
 - Added 'PING COLOR' to the cogs_color dictionary
+- Added command - $reverse [EU/RU]
+- Added 'REVERSE COLOR' to the cogs_color dictionary
+- Added command - $translit [EU/RU]
+- Added 'TRANSLIT COLOR EXAMPLE' to the cogs_color dictionary
+- Renamed 'BOT COLOR ARG ERROR' to 'BOT COLOR EXAMPLE' to the cogs_color dictionary
+- Renamed 'CLEAR ALL EMOJI COLOR ERROR' to 'CLEAR ALL EMOJI COLOR EXAMPLE' to the cogs_color dictionary
+- Renamed 'CLEAR EMOJI COLOR ERROR' to 'CLEAR EMOJI COLOR EXAMPLE' to the cogs_color dictionary
+- Renamed 'DELETE EMOJI COLOR ERROR' to 'DELETE EMOJI COLOR EXAMPLE' to the cogs_color dictionary
+- Renamed 'ADD EMOJI COLOR ERROR' to 'ADD EMOJI COLOR EXAMPLE' to the cogs_color dictionary
+- Fixed incorrect description of command usage - $delete_emoji
+- Fixed a syntax error in the command usage description text - $clear_emoji [does not affect performance]
+- Fixed a syntax error in the command usage description text - $clear_all_emoji [does not affect performance]
+- Added 'TRANSLIT COLOR ERROR' to the cogs_color dictionary
+- Added command - $ru_layout [EU/RU]
+- Added 'LAYOUT COLOR EXAMPLE' to the cogs_color dictionary
+- Added 'LAYOUT COLOR ERROR' to the cogs_color dictionary
