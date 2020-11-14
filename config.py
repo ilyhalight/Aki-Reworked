@@ -28,11 +28,11 @@ cogs_color = {
  	'SERVER INFO COLOR': 0x2285f5,
   	'MCACH COLOR': 0xe00055,
    	'UPTIME COLOR': 0xca3a3a,
-    'PING COLOR': 0xca3a3a,
-    'REVERSE COLOR': 0xca3a3a,
-    'TRANSLIT COLOR EXAMPLE': 0xca3a3a,
+	'PING COLOR': 0xca3a3a,
+	'REVERSE COLOR': 0xca3a3a,
+	'TRANSLIT COLOR EXAMPLE': 0xca3a3a,
 	'TRANSLIT COLOR ERROR': 0xc9a638,
-    'LAYOUT COLOR EXAMPLE': 0xca3a3a,
+	'LAYOUT COLOR EXAMPLE': 0xca3a3a,
 	'LAYOUT COLOR ERROR': 0xc9a638,
 }
 
@@ -51,8 +51,8 @@ quick_messages = {
 }
 
 other_settings = {
-	'COMMAND VALUE': '11',
-	'CURRENT PATCH': '0.1.6',
+	'COMMAND VALUE': '21',
+	'CURRENT PATCH': '0.1.6.1',
 	'CURRENT VERSION': 'Early Alpha',
 }
 
