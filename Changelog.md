@@ -110,3 +110,9 @@ Early Alpha 0.1.6 - (2020-11-12)
 - Added command - $ru_layout [EU/RU]
 - Added 'LAYOUT COLOR EXAMPLE' to the cogs_color dictionary
 - Added 'LAYOUT COLOR ERROR' to the cogs_color dictionary
+
+# Early Alpha 0.1.6.1 - (2020-11-14)
+- Changed 'COMMAND VALUE' to 21 in the other_settings dictionary
+- Moved the 'translit_abc' variable from the 'utils' cog to useful.py
+- Moved the 'ru_layout' variable from the 'utils' cog to useful.py
+- Fixed incorrect command in the log in the correct command $translit [EU/RU]
