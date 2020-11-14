@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import random, datetime, config, wikipedia, pytz, useful
-from useful import diff
+from useful import diff, translit_abc, ru_layout
 from config import cogs_color, settings, quick_messages, other_settings, fast_link
 prefix = settings['PREFIX']
 unknown_log = quick_messages['UNKNOWN ERROR LOG']
@@ -118,49 +118,6 @@ class utils(commands.Cog):
         
     @commands.command(aliases = ['Forgot_layout', 'forgot_layout', 'Forgotlayout', 'forgotlayout', 'Ru_layout', 'ru_layout', 'Rulayout', 'rulayout'])
     async def __Forgot_layout(self, ctx, *, message = None):
-        a = {'q':'й', 
-             'w':'ц', 
-             'e':'у', 
-             'r':'к', 
-             't':'е', 
-             'y':'н', 
-             'u':'г', 
-             'i':'ш', 
-             'o':'щ', 
-             'p':'з', 
-             '[':'х', 
-                '{':'х','}':'ъ',
-             ']':'ъ',
-             'a':'ф',
-             's':'ы',
-             'd':'в',
-             'f':'а',
-             'g':'п',
-             'h':'р',
-             'j':'о',
-             'k':'л',
-             'l':'д',
-             ':':'ж',
-             ';':'ж',
-             '"':'э',
-             "'":'э',
-             'z':'я',
-             'x':'ч',
-             'c':'с',
-             'v':'м',
-             'b':'и',
-             'n':'т',
-             'm':'ь',
-             '<':'б',
-             ',':'б',
-             '>':'ю',
-             '.':'ю',
-             '?':',',
-             '/':'.',
-             '`':'ё',
-             '~':'ё',
-             ' ':' ',
-             '!':'!'}
         if message == None:
             emb = discord.Embed(description = f'Example: `{prefix}ru_layout ghbdtn` - A message will be displayed привет.', color = cogs_color['LAYOUT COLOR EXAMPLE'])
             emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
@@ -170,8 +127,8 @@ class utils(commands.Cog):
             itog = ""
             errors = ""
             for i in message:
-                if i.lower() in a:
-                    itog += a[i.lower()]
+                if i.lower() in ru_layout:
+                    itog += ru_layout[i.lower()]
                 else:
                     errors += f"`{i}` "
             if len(errors) <= 0:
@@ -193,37 +150,7 @@ class utils(commands.Cog):
                 print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}ru_layout [EU]")
                   
     @commands.command(aliases = ['Translit', 'translit'])
-    async def __translit(self, ctx, *, message = None):
-        a = {
-            'q':'ку', 
-            'w':'в', 
-            'e':'е', 
-            'r':'р', 
-            't':'т', 
-            'y':'й', 
-            'u':'у', 
-            'i':'и', 
-            'o':'о', 
-            'p':'п', 
-            'a':'а',
-            's':'с',
-            'd':'д',
-            'f':'ф',
-            'g':'г',
-            'h':'х',
-            'j':'ж',
-            'k':'к',
-            'l':'л',
-            'z':'з',
-            'x':'х',
-            'c':'с',
-            'v':'в',
-            'b':'б',
-            'n':'н',
-            'm':'м',
-            ',':',',
-            ' ':' ',
-            '!':'!'}      
+    async def __translit(self, ctx, *, message = None):  
         if message == None:
             emb = discord.Embed(description = f'Example: `{prefix}translit privet` - A message will be displayed привет.', color = cogs_color['TRANSLIT COLOR EXAMPLE'])
             emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
@@ -233,8 +160,8 @@ class utils(commands.Cog):
             itog = ""
             errors = ""
             for i in message:
-                if i.lower() in a:
-                    itog += a[i.lower()]
+                if i.lower() in translit_abc:
+                    itog += translit_abc[i.lower()]
                 else:
                     errors += f"`{i}` "
             if len(errors) <= 0:
@@ -253,7 +180,7 @@ class utils(commands.Cog):
                 emb = discord.Embed(description = f'{itog_new}{errors_itog}', color = cogs_color['LAYOUT COLOR EXAMPLE'])
                 emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb) 
-                print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}ру_раскладка [RU]")      
+                print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}транслит [RU]")      
                 
                      
 #██████╗░██╗░░░██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗
@@ -357,49 +284,6 @@ class utils(commands.Cog):
     
     @commands.command(aliases = ['Забыл_раскладку', 'забыл_раскладку', 'Забылраскладку', 'забылраскладку', 'Ру_раскладка', 'ру_раскладка', 'Рураскладка', 'рураскладка'])
     async def ___Forgot_layout(self, ctx, *, message = None):
-        a = {'q':'й', 
-             'w':'ц', 
-             'e':'у', 
-             'r':'к', 
-             't':'е', 
-             'y':'н', 
-             'u':'г', 
-             'i':'ш', 
-             'o':'щ', 
-             'p':'з', 
-             '[':'х', 
-                '{':'х','}':'ъ',
-             ']':'ъ',
-             'a':'ф',
-             's':'ы',
-             'd':'в',
-             'f':'а',
-             'g':'п',
-             'h':'р',
-             'j':'о',
-             'k':'л',
-             'l':'д',
-             ':':'ж',
-             ';':'ж',
-             '"':'э',
-             "'":'э',
-             'z':'я',
-             'x':'ч',
-             'c':'с',
-             'v':'м',
-             'b':'и',
-             'n':'т',
-             'm':'ь',
-             '<':'б',
-             ',':'б',
-             '>':'ю',
-             '.':'ю',
-             '?':',',
-             '/':'.',
-             '`':'ё',
-             '~':'ё',
-             ' ':' ',
-             '!':'!'}
         if message == None:
             emb = discord.Embed(description = f'Пример: `{prefix}ру_раскладка ghbdtn` - Будет выведено сообщение привет.', color = cogs_color['LAYOUT COLOR EXAMPLE'])
             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
@@ -409,8 +293,8 @@ class utils(commands.Cog):
             itog = ""
             errors = ""
             for i in message:
-                if i.lower() in a:
-                    itog += a[i.lower()]
+                if i.lower() in ru_layout:
+                    itog += ru_layout[i.lower()]
                 else:
                     errors += f"`{i}` "
             if len(errors) <= 0:
@@ -432,37 +316,7 @@ class utils(commands.Cog):
                 print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}ру_раскладка [RU]")
                   
     @commands.command(aliases = ['Транслит', 'транслит'])
-    async def ___translit(self, ctx, *, message = None):
-        a = {
-            'q':'ку', 
-            'w':'в', 
-            'e':'е', 
-            'r':'р', 
-            't':'т', 
-            'y':'й', 
-            'u':'у', 
-            'i':'и', 
-            'o':'о', 
-            'p':'п', 
-            'a':'а',
-            's':'с',
-            'd':'д',
-            'f':'ф',
-            'g':'г',
-            'h':'х',
-            'j':'ж',
-            'k':'к',
-            'l':'л',
-            'z':'з',
-            'x':'х',
-            'c':'с',
-            'v':'в',
-            'b':'б',
-            'n':'н',
-            'm':'м',
-            ',':',',
-            ' ':' ',
-            '!':'!'}      
+    async def ___translit(self, ctx, *, message = None):  
         if message == None:
             emb = discord.Embed(description = f'Пример: `{prefix}транслит privet` - Будет выведено сообщение привет.', color = cogs_color['TRANSLIT COLOR EXAMPLE'])
             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
@@ -472,8 +326,8 @@ class utils(commands.Cog):
             itog = ""
             errors = ""
             for i in message:
-                if i.lower() in a:
-                    itog += a[i.lower()]
+                if i.lower() in translit_abc:
+                    itog += translit_abc[i.lower()]
                 else:
                     errors += f"`{i}` "
             if len(errors) <= 0:
@@ -493,7 +347,7 @@ class utils(commands.Cog):
                 emb = discord.Embed(description = f'{itog_new}{errors_itog}', color = cogs_color['LAYOUT COLOR EXAMPLE'])
                 emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb) 
-                print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}ру_раскладка [RU]")   
+                print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}транслит [RU]")   
                 
                          
 def setup(client):
