@@ -53,7 +53,7 @@ class utils(commands.Cog):
             emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:utils] Максимальное число не было указано | {prefix}rtc [EU]')
-        if count1 == None:
+        if count != None and count1 == None:
             try:
                 await ctx.send(str(random.randint(int(1), int(count))))
                 print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}rtc [EU]')
@@ -62,7 +62,7 @@ class utils(commands.Cog):
                 emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
                 print(f'{third_sym_log} {prefix}rtc [EU]')   
-        if count1 != None:
+        if count != None and count1 != None:
             try:
                 await ctx.send(str(random.randint(int(count), int(count1))))
                 print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}rtc [EU]')
@@ -242,12 +242,12 @@ class utils(commands.Cog):
     
     @commands.command(aliases = ['Рандом', 'рандом', 'Ранд', 'ранд'])  
     async def ___random(self, ctx, count = None, count1 = None):
-        if count == None:
+        if count == None and count1 == None:
             emb = discord.Embed(description = f'Пример: `{prefix}рандом 5` - Будет выведено число от 1 до 5.\n Пример 2: `{prefix}рандом 5 10` - Будет выведено число от 5 до 10.', color = cogs_color['RANDOM COLOR'])
             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:utils] Максимальное число не было указано | {prefix}rtc [RU]')
-        if count1 == None:
+        if count != None and count1 == None:
             try:
                 await ctx.send(str(random.randint(int(1), int(count))))
                 print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}rtc [RU]')
@@ -256,7 +256,7 @@ class utils(commands.Cog):
                 emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
                 print(f'{third_sym_log} {prefix}rtc [RU]')   
-        if count1 != None:
+        if count != None and count1 != None:
             try:
                 await ctx.send(str(random.randint(int(count), int(count1))))
                 print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}rtc [RU]')
