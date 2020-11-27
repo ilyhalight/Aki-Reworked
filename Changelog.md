@@ -117,5 +117,5 @@ Early Alpha 0.1.6 - (2020-11-12)
 - Moved the 'ru_layout' variable from the 'utils' cog to useful.py
 - Fixed incorrect command in the log in the correct command $translit [EU/RU]
 
-Early Alpha 0.1.6.2 - (2020-11-27)
+# Early Alpha 0.1.6.2 - (2020-11-27)
 - Improved a $random [EU/RU]
