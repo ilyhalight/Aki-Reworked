@@ -119,3 +119,4 @@ Early Alpha 0.1.6 - (2020-11-12)
 
 # Early Alpha 0.1.6.2 - (2020-11-27)
 - Improved a $random [EU/RU]
+- Fixed TypeError in the $random [EU/RU]
