@@ -51,8 +51,8 @@ quick_messages = {
 }
 
 other_settings = {
-	'COMMAND VALUE': '21',
-	'CURRENT PATCH': '0.1.6.1',
+	'COMMAND VALUE': '23',
+	'CURRENT PATCH': '0.1.6.2',
 	'CURRENT VERSION': 'Early Alpha',
 }
 
