@@ -29,23 +29,49 @@ class utils(commands.Cog):
         await ctx.send(embed = emb)
         print(f'[Logs:utils] Аватар пользователя {user} был выведен | {prefix}avatar [EU]')
         
-    @commands.command(aliases = ['Random', 'random', 'Rand', 'rand'])    
-    async def __random(self, ctx, count = None):
-        if count == None:
-            emb = discord.Embed(description = f'Example: `{prefix}random 5` - Will print a number from 1 to 5.', color = cogs_color['RANDOM COLOR'])
+    # @commands.command(aliases = ['Random', 'random', 'Rand', 'rand'])    
+    # async def __random(self, ctx, count = None):
+    #     if count == None:
+    #         emb = discord.Embed(description = f'Example: `{prefix}random 5` - Will print a number from 1 to 5.', color = cogs_color['RANDOM COLOR'])
+    #         emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+    #         await ctx.send(embed = emb)
+    #         print(f'[Logs:utils] Максимальное число не было указано | {prefix}random [EU]')
+    #     else:
+    #         try:
+    #             await ctx.send(str(random.randint(int(1), int(count))))
+    #             print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}random [EU]')
+    #         except ValueError:
+    #             emb = discord.Embed(description = quick_messages['THIRD PARTY SYM ERROR EN'], color = cogs_color['RANDOM COLOR ERROR'])
+    #             emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+    #             await ctx.send(embed = emb)
+    #             print(f'{third_sym_log} {prefix}random [EU]')    
+    
+    @commands.command(aliases = ['Random', 'random', 'Rand', 'rand'])  
+    async def __random(self, ctx, count = None, count1 = None):
+        if count == None and count1 == None:
+            emb = discord.Embed(description = f'Example: `{prefix}random 5` - Will print a number from 1 to 5.\n Example: `{prefix}random 5 10` - Will print a number from 5 to 10.', color = cogs_color['RANDOM COLOR'])
             emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
-            print(f'[Logs:utils] Максимальное число не было указано | {prefix}random [EU]')
-        else:
+            print(f'[Logs:utils] Максимальное число не было указано | {prefix}rtc [EU]')
+        if count1 == None:
             try:
                 await ctx.send(str(random.randint(int(1), int(count))))
-                print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}random [EU]')
+                print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}rtc [EU]')
             except ValueError:
                 emb = discord.Embed(description = quick_messages['THIRD PARTY SYM ERROR EN'], color = cogs_color['RANDOM COLOR ERROR'])
                 emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
-                print(f'{third_sym_log} {prefix}random [EU]')    
-                
+                print(f'{third_sym_log} {prefix}rtc [EU]')   
+        if count1 != None:
+            try:
+                await ctx.send(str(random.randint(int(count), int(count1))))
+                print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}rtc [EU]')
+            except ValueError:
+                emb = discord.Embed(description = quick_messages['THIRD PARTY SYM ERROR EN'], color = cogs_color['RANDOM COLOR ERROR'])
+                emb.set_footer(text = copyright_en, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f'{third_sym_log} {prefix}rtc [EU]') 
+                            
     @commands.command(aliases = ['Time', 'time', 'Clock', 'clock'])
     async def __time(self, ctx):
         tz_paris = pytz.timezone('Europe/Paris')
@@ -197,23 +223,49 @@ class utils(commands.Cog):
         await ctx.send(embed = emb)
         print(f'[Logs:utils] Аватар пользователя {user} был выведен | {prefix}аватар [RU]')
         
-    @commands.command(aliases = ['Рандом', 'рандом', 'Ранд', 'ранд'])    
-    async def ___random(self, ctx, count = None):
+    # @commands.command(aliases = ['Рандом', 'рандом', 'Ранд', 'ранд'])    
+    # async def ___random(self, ctx, count = None):
+    #     if count == None:
+    #         emb = discord.Embed(description = f'Пример: `{prefix}рандом 5` - Будет выведено число от 1 до 5.', color = cogs_color['RANDOM COLOR'])
+    #         emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+    #         await ctx.send(embed = emb)
+    #         print(f'[Logs:utils] Максимальное число не было указано | {prefix}random [RU]')
+    #     else:
+    #         try:
+    #             await ctx.send(str(random.randint(int(1), int(count))))
+    #             print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}random [RU]')
+    #         except ValueError:
+    #             emb = discord.Embed(description = quick_messages['THIRD PARTY SYM ERROR'], color = cogs_color['RANDOM COLOR ERROR'])
+    #             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+    #             await ctx.send(embed = emb)
+    #             print(f'{third_sym_log} {prefix}random [RU]')                          
+    
+    @commands.command(aliases = ['Рандом', 'рандом', 'Ранд', 'ранд'])  
+    async def ___random(self, ctx, count = None, count1 = None):
         if count == None:
-            emb = discord.Embed(description = f'Пример: `{prefix}рандом 5` - Будет выведено число от 1 до 5.', color = cogs_color['RANDOM COLOR'])
+            emb = discord.Embed(description = f'Пример: `{prefix}рандом 5` - Будет выведено число от 1 до 5.\n Пример 2: `{prefix}рандом 5 10` - Будет выведено число от 5 до 10.', color = cogs_color['RANDOM COLOR'])
             emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
             await ctx.send(embed = emb)
-            print(f'[Logs:utils] Максимальное число не было указано | {prefix}random [RU]')
-        else:
+            print(f'[Logs:utils] Максимальное число не было указано | {prefix}rtc [RU]')
+        if count1 == None:
             try:
                 await ctx.send(str(random.randint(int(1), int(count))))
-                print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}random [RU]')
+                print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}rtc [RU]')
             except ValueError:
                 emb = discord.Embed(description = quick_messages['THIRD PARTY SYM ERROR'], color = cogs_color['RANDOM COLOR ERROR'])
                 emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
                 await ctx.send(embed = emb)
-                print(f'{third_sym_log} {prefix}random [RU]')                          
-    
+                print(f'{third_sym_log} {prefix}rtc [RU]')   
+        if count1 != None:
+            try:
+                await ctx.send(str(random.randint(int(count), int(count1))))
+                print(f'[Logs:utils] Рандомное число было успешно сгенерировано | {prefix}rtc [RU]')
+            except ValueError:
+                emb = discord.Embed(description = quick_messages['THIRD PARTY SYM ERROR'], color = cogs_color['RANDOM COLOR ERROR'])
+                emb.set_footer(text = copyright_ru, icon_url = self.client.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f'{third_sym_log} {prefix}rtc [RU]') 
+                
     @commands.command(aliases = ['Время', 'время', 'Часы', 'часы', 'Тайм', 'тайм'])
     async def ___time(self, ctx):
         clock_dt = datetime.datetime.now()
