@@ -1,4 +1,5 @@
 # Early Alpha 0.1 - (2020-11-05)
+- Added new cog - utils.py
 - Added command - $avatar [EU/RU]
 - Added command - $random [EU/RU]
 - Added command - $time [EU/RU]
@@ -55,12 +56,11 @@
 - Added 'TIME MSC' to the fast_link dictionary
 - Fixed display of ValueError for the command $ранд
 - Added 'TIME CET' to the fast_link dictionary
-- Added 'THIRD PARTY SYM ERROR' to the fast_link dictionary
-- Added 'THIRD PARTY SYM ERROR EN' to the fast_link dictionary
+- Added 'THIRD PARTY SYM ERROR' to the quick_messages dictionary
+- Added 'THIRD PARTY SYM ERROR EN' to the quick_messages dictionary
 - Renamed 'UNKNOWN ERROR ENLISH' to 'UNKNOWN ERROR EN'
-- Added 'THIRD PARTY SYM ERROR LOG' to the fast_link dictionary
+- Added 'THIRD PARTY SYM ERROR LOG' to the quick_messages dictionary
 - Fixed missing English translation in 'UNKNOWN ERROR EN'
-- Added variable 'third_sym_log' to utils.py
 - Added command - $server [EU/RU]
 - Added 'SERVER INFO COLOR' to the cogs_color dictionary
 - Small changes the text of the log output in the command $time [EU/RU]
