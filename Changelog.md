@@ -1,4 +1,4 @@
-Early Alpha 0.1 - (2020-11-05)
+# Early Alpha 0.1 - (2020-11-05)
 - Added new cog - utils.py
 - Added command - $avatar [EU/RU]
 - Added command - $random [EU/RU]
@@ -14,7 +14,7 @@ Early Alpha 0.1 - (2020-11-05)
 - Renamed 'NAME BOT' to 'BOT NAME' to the settings dictionary
 - Added 'OWNER PING' to the settings dictionary
 
-Early Alpha 0.1.1 - (2020-11-06)
+# Early Alpha 0.1.1 - (2020-11-06)
 - Added new cog - Owner.py
 - Added command - $emoji [Owner Only]
 - Added command - $del_emoji [Owner Only]
@@ -29,7 +29,7 @@ Early Alpha 0.1.1 - (2020-11-06)
 - Added 'COPYRIGHT EN' to the quick_messages dictionary
 - Added 'BOT STATUS LOG' to the quick_messages dictionary
 
-Early Alpha 0.1.2 - (2020-11-07)
+# Early Alpha 0.1.2 - (2020-11-07)
 - Fixed a small bug in the dictionaries config
 - Added new cog - info.py
 - Added command stub $help (Just a template)
@@ -37,7 +37,7 @@ Early Alpha 0.1.2 - (2020-11-07)
 - Added 'COMMAND VALUE' to the other_settings dictionary
 - Added command - $ahelp [EU/RU] [Owner Only]
 
-Early Alpha 0.1.3 - (2020-11-08)
+# Early Alpha 0.1.3 - (2020-11-08)
 - Added explanations for the commands $clear_all_emoji
 - Added explanations for the commands $clear_emoji
 - Added explanations for the commands $delete_emoji
@@ -47,7 +47,7 @@ Early Alpha 0.1.3 - (2020-11-08)
 - Added 'CURRENT PATCH' to the other_settings dictionary
 - Added 'SPECIAL THANKS' to the settings dictionary
 
-Early Alpha 0.1.4 - (2020-11-09)
+# Early Alpha 0.1.4 - (2020-11-09)
 - Small optimized code
 - Fixed a bug with the lack of russification in the command - $хелп [No arguments]
 - Deleted the variable 'unknown' from the info.py
@@ -71,13 +71,13 @@ Early Alpha 0.1.4 - (2020-11-09)
 - Added 'STREAM URL' to the fast_link dictionary
 - Added 'WIKIPEDIA IMG' to the fast_link dictionary
 
-Early Alpha 0.1.4.1 - (2020-11-10)
+# Early Alpha 0.1.4.1 - (2020-11-10)
 - Fixed 'OWNER PING' to the settings dictionary
 - Added command - $achievement [EU/RU]
 - Added 'MCACH' to the fast_link dictionary
 - Added 'MCACH COLOR' to the cogs_color dictionary
 
-Early Alpha 0.1.5 - (2020-11-11)
+# Early Alpha 0.1.5 - (2020-11-11)
 - Added command - $ping [EU/RU]
 - Added command - $timeup [EU/RU]
 - Added 'TIMEUP COLOR' to the cogs_color dictionary
@@ -85,7 +85,7 @@ Early Alpha 0.1.5 - (2020-11-11)
 - Added an alternative command for $server [EU/RU]
 - Added an alternative command for $ahelp [EU/RU]
 
-Early Alpha 0.1.6 - (2020-11-12)
+# Early Alpha 0.1.6 - (2020-11-12)
 - Created a new custom python module - useful
 - Moved functionality from the "clock" module to the "useful" module
 - Removed custom python module - clock
@@ -114,17 +114,17 @@ Early Alpha 0.1.6 - (2020-11-12)
 - Added 'LAYOUT COLOR EXAMPLE' to the cogs_color dictionary
 - Added 'LAYOUT COLOR ERROR' to the cogs_color dictionary
 
-Early Alpha 0.1.6.1 - (2020-11-12)
+# Early Alpha 0.1.6.1 - (2020-11-12)
 - Changed 'COMMAND VALUE' to 21 in the other_settings dictionary
 - Moved the 'translit_abc' variable from the 'utils' cog to useful.py
 - Moved the 'ru_layout' variable from the 'utils' cog to useful.py
 - Fixed incorrect command in the log in the correct command $translit [EU/RU]
 
-Early Alpha 0.1.6.2 - (2020-11-27)
+# Early Alpha 0.1.6.2 - (2020-11-27)
 - Improved a $random [EU/RU]
 - Fixed TypeError in the $random [EU/RU]
 
-Alpha 0.2 - (2020-12-)
+# Alpha 0.2 - (2020-12-13)
 - Fixed incorrect command in logs $random [EU/RU]
 - Rewrote the main code
 - Reworked the cog system (Commands are now separate cogs)
@@ -155,5 +155,4 @@ Alpha 0.2 - (2020-12-)
 - Added 'FUCK U' to the cogs_color dictionary
 - Added 'HELP COLOR' to the cogs_color dictionary
 - Changed someone else's cog "PressF" for modern discord.py, And also reworked it to fit the style of my bot
-- Added a nice bot launch menu (Use if you run on your pc / Dedicated Server) Special thanks: https://github.com/Wanderson-Magalhaes
 - Frequently used variables have been moved to custom module useful.py  (prefix, copyright_ru, copyright_en)
