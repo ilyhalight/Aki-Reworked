@@ -1,14 +1,15 @@
+#_________settings__________
 settings = {
-	'TOKEN': 'Write your bot`s token here', #ur bot`s token
-	'BOT NAME': 'Aki', #ur bot`s name
-	'ID': 'Write your bot`s id here', #ur bot`s id
-	'OWNER ID': 551653500216672256, #ur id
+	'TOKEN': 'Write your bot`s token here', #bot token
+	'BOT NAME': 'Aki', #bot name
+	'ID': 'Write your bot`s id here',#bot id  
+	'OWNER ID': 551653500216672256, #owner id
 	'PREFIX': '$', #bot prefix
-	'OWNER':'Toil#6505', #ur name
-	'OWNER PING':'@Toil' #dosn`t work
- 	'SPECIAL THANKS':'Fsoky#9610', 
+	'OWNER':'Toil#5605', #discord owner name
+	'OWNER PING':'<@551653500216672256>', #owner ping
+ 	'SPECIAL THANKS':'Fsoky#9610', #thanks
 }
-
+#_________color_____________
 cogs_color = {
 	'AVATAR COLOR': 0x0c0c0c,
 	'RANDOM COLOR': 0xca3a3a,
@@ -34,8 +35,13 @@ cogs_color = {
 	'TRANSLIT COLOR ERROR': 0xc9a638,
 	'LAYOUT COLOR EXAMPLE': 0xca3a3a,
 	'LAYOUT COLOR ERROR': 0xc9a638,
+	'ON GUILD JOIN LOG': 0x32ea96,
+ 	'ON GUILD LEAVE LOG': 0x32ea96,
+	'FUCK U NOT USER': 0x6bf810,
+	'FUCK U': 0xca3a3a,
+ 	'HELP COLOR': 0x2285f5,
 }
-
+#_________quick messages____
 quick_messages = {
     #logs
 	'UNKNOWN ERROR LOG': '[Logs:error] Произошла неизвестная ошибка! |',
@@ -49,21 +55,27 @@ quick_messages = {
 	'COPYRIGHT RU': 'Copyright © 2020 Aki | Все права защищены.',
  	'COPYRIGHT EN': 'Copyright © 2020 Aki | All rights reserved.',
 }
-
+#_________other settings____
 other_settings = {
-	'COMMAND VALUE': '23',
-	'CURRENT PATCH': '0.1.6.2',
-	'CURRENT VERSION': 'Early Alpha',
+	'COMMAND VALUE': '9',
+	'CURRENT PATCH': '0.2',
+	'CURRENT VERSION': 'Alpha',
 }
-
+#_________fast link_________
 fast_link = {
 	'TIME MSC': 'https://time100.ru/',
 	'TIME CET': 'https://time.is/CET',
  	'STREAM URL': 'https://www.twitch.tv/bratishkinoff',
 	'WIKIPEDIA IMG': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png',
  	'MCACH': 'https://minecraftskinstealer.com/achievement/',
+	'DISCORD URL': 'https://discord.gg/Vh3VcaEv23'
 }
-
+#_________emoji_____________
 emoji = {
 	'ping_emoji': '🟩🔳🔳🔳🔳'
+}
+#_________channels__________
+channels = {
+	'LOG JOIN CHANNEL': 782619819979046943,
+ 	'LOG LEAVE CHANNEL': 782619819979046943,
 }

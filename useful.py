@@ -1,7 +1,95 @@
 import psutil as ps
+import config
 from psutil import virtual_memory
+from config import settings, quick_messages
+prefix = settings['PREFIX']
+copyright_ru = quick_messages['COPYRIGHT RU']
+copyright_en = quick_messages['COPYRIGHT EN']
 
-async def bytes2human(number, typer=None): # Thanks Fsoky community
+fucku_en = [
+        "You are a fucking fucktard {}! ~{}",
+        "Fuck you, {}. ~{}",
+        "Fucking fuck off, {}. ~{}",
+        "Fuck off, {}. ~{}",
+        "Fuck this, {}. ~{}",
+        "Fuck that, {}. ~{}",
+        "You are a fucking faggot, {}. ~{}",
+        "{}, Thou clay-brained guts, thou knotty-pated fool, thou whoreson obscene greasy tallow-catch! ~{}",
+        "Oh fuck off, just really fuck off you total dickface. Christ {}, you are fucking thick. ~{}",
+        "{}, why don't you go outside and play hide-and-go-fuck-yourself? ~{} ",
+        "Hey {}, what a fascinating story, in what chapter do you shut the fuck up?\n\nSincerly,\n{}",
+        "What you've just said is one of the most insanely idiotic things I have ever heard, {}. At no point in your rambling, incoherent response were you even close to anything that could be considered a rational thought. Everyone in this room is now dumber for having listened to it. I award you no points :name, and may God have mercy on your soul. ~{}"
+        ]
+
+fucku_ru = [
+        "Ты гребаный ублюдок {}! ~{}",
+        "Пошёл ты, {}. ~{}",
+        "Отвали, {}. ~{}",
+        "Отъебись, {}. ~{}",
+        "К черту тебя, {}. ~{}",
+        "Пошёл к чёрту, {}. ~{}",
+        "Ты гребаный пидор, {}. ~{}",
+        "{}, Ты, кишка с глиняным мозгом, глупый дурак, сукин сын, непристойный жирный подлец!! ~{}",
+        "Ой, отвали, просто отвали, полное хуйло. Господи {}, ты чертовски тупой. ~{}",
+        "{}, почему бы вам не выйти на улицу и не пойти нахуй? ~{} ",
+        "Хей {}, какая увлекательная история, в какой главе ты заткнёшься?\n\nИскренне,\n{}",
+        "То, что вы только что сказали, - одна из самых безумных идиотских вещей, которые я когда-либо слышал, {}. В своем бессвязном, бестолковом ответе вы ни разу не приблизились к чему-либо, что можно было бы считать рациональной мыслью. Все в этой комнате теперь глупы из-за того, что послушали это. Я не буду вас оскорблять, и да помилует Господь твою душу. ~{}"
+        ]
+
+uwutalk_en = [
+        'S-Sorry onii-chan p-please d-do me harder ;w;\n{}',
+        'Y-You got me all wet now senpai!\n{}',
+        'D-Dont t-touch me there senpai\n{}',
+        'P-Please l-love me harder oniichan ohh grrh aahhhh~!\n{}',
+        'Give me all your cum senpai ahhhhh~\n{}',
+        'F-Fuck me harder chan!','Oh my god I hate you so much senpai but please k-keep fucking me harder! ahhh~\n{}',
+        'D-do you like my stripped panties getting soaked by you and your hard cock? ehhh master your so lewd ^_^\n{}',
+        'kun your cute little dick between my pussy lips looks really cute, Im blushing\n{}',
+        'Master does it feel good when I slide by tits up and down on your cute manly part?\n{}',
+        'oniichan my t-toes are so warm with your cum all over them uwu~\n{}',
+        'Lets take this swimsuit off already <3 ill drink your unknown melty juice\n{}',
+        'S-stop senpai if we keep making these lewd sounds im going to cum\n{}',
+        'Your such a pervert for filling me up with your baby batter senpai\n{}',
+        'Fill up my baby chamber with your semen kun (＞ｍ＜)\n{}',
+        'M-master d-dont spank my petite butt so hard ahhhH~~~ your getting me so w-wet~\n{}',
+        'Senpai your cock is already throbbing from my huge tits~\n{}',
+        'Hey kun, Can I have some semen?\n{}',
+        'Senpai shove deeper your penis in m-my pussy (>ω<) please\n{}'
+]
+
+uwutalk_ru = [
+        'П-прости, онии-чан, п-пожалуйста, делай это посильнее ;w;\n{}',
+        'Т-ты сделал меня всю мокрой, сэмпай!\n{}',
+        'Н-не т-трогай меня там, сэмпай\n{}',
+        'П-пожалуйста, люби меня сильнее онии-чан ооо гррх аахххх ~!\n{}',
+        'Дай мне всю свою сперму, сэмпай аххххх ~\n{}',
+        'Т-трахни меня сильнее, чан!\n{}',
+        'Боже мой, я так сильно тебя ненавижу, сэмпай, но, пожалуйста, продолжай трахать меня сильнее! ааа ~\n{}',
+        'Т-тебе нравится, когда ты и твой твердый член пропитали мои мокрые трусики? эххх мастер ты такой развратный ^_^\n{}',
+        'Кун, твой милый маленький член между губами моей киски выглядит очень мило, я краснею\n{}',
+        'Хозяин, тебе хорошо, когда я скольжу грудью вверх и вниз по твоей милой мужской части?\n{}',
+        'Онии-чан, моя грудь очень тёплая от твоей спермы на ней uwu~\n{}',
+        'Давай уже снимем этот купальник <3 я выпью твой таинственный жидкий сок\n{}',
+        'П-Прекрати сэмпай, если мы продолжим издавать эти непристойные звуки, я кончу\n{}',
+        'Ты такой извращенец, что наполнил меня своим детским кляром-сэмпай\n{}',
+        'Наполни мою детскую комнатку своей спермой-кун (＞ｍ＜)\n{}',
+        'М-мастер, н-не шлепай мою маленькую задницу так сильно ахххХ~~~ ты делаешь меня такой м-мокрой~\n{}',
+        'Сэмпай, твой член уже пульсирует от моих огромных сисек~\n{}',
+        'Эй, кун, можно мне немного спермы?\n{}',
+        'Сэмпай засуньте свой пенис глубже в мою киску (> ω <), пожалуйста\n{}'
+]
+
+ping_list = [ # ПЕРЕНЕСИ МЕНЯ В ЮЗЕФУЛ.ПУ
+            {'ping': 0.00000000000000000, 'emoji': '🟩🔳🔳🔳🔳'},
+            {'ping': 0.10000000000000000, 'emoji': '🟧🟩🔳🔳🔳'},
+            {'ping': 0.15000000000000000, 'emoji': '🟥🟧🟩🔳🔳'},
+            {'ping': 0.20000000000000000, 'emoji': '🟥🟥🟧🟩🔳'},
+            {'ping': 0.25000000000000000, 'emoji': '🟥🟥🟥🟧🟩'},
+            {'ping': 0.30000000000000000, 'emoji': '🟥🟥🟥🟥🟧'},
+            {'ping': 0.35000000000000000, 'emoji': '🟥🟥🟥🟥🟥'}
+]
+
+async def bytes2human(number, typer = None): # Thanks Fsoky community
         # Пример Работы Этой Функции перевода чисел:
         # >> bytes2human(10000)
         # >> '9.8K'
@@ -25,7 +113,7 @@ async def bytes2human(number, typer=None): # Thanks Fsoky community
 
         return f"{number}B"
 
-def bytes2human(number, typer=None): # Thanks Fsoky community
+def bytes2human(number, typer = None): # Thanks Fsoky community
         if typer == "system":
             symbols = ('KБ', 'МБ', 'ГБ', 'TБ', 'ПБ', 'ЭБ', 'ЗБ', 'ИБ')  # Для перевода в Килобайты, Мегабайты, Гигобайты, Террабайты, Петабайты, Петабайты, Эксабайты, Зеттабайты, Йоттабайты
         else:
@@ -42,7 +130,7 @@ def bytes2human(number, typer=None): # Thanks Fsoky community
                 return '%.1f%s' % (value, s)
 
         return f"{number}B"
-    
+
 diff = {
     00.00 : "https://media.discordapp.net/attachments/720644512510378004/721619905358725150/time00.00.png",
     00.05 : "https://cdn.discordapp.com/attachments/720644512510378004/721627416384110602/time00.05.png",
@@ -191,16 +279,16 @@ diff = {
 }
 
 translit_abc = {
-    'q':'ку', 
-    'w':'в', 
-    'e':'е', 
-    'r':'р', 
-    't':'т', 
-    'y':'й', 
-    'u':'у', 
-    'i':'и', 
-    'o':'о', 
-    'p':'п', 
+    'q':'ку',
+    'w':'в',
+    'e':'е',
+    'r':'р',
+    't':'т',
+    'y':'й',
+    'u':'у',
+    'i':'и',
+    'o':'о',
+    'p':'п',
     'a':'а',
     's':'с',
     'd':'д',
@@ -220,20 +308,20 @@ translit_abc = {
     ',':',',
     ' ':' ',
     '!':'!'
-}   
+}
 
 ru_layout = {
-    'q':'й', 
-    'w':'ц', 
-    'e':'у', 
-    'r':'к', 
-    't':'е', 
-    'y':'н', 
-    'u':'г', 
-    'i':'ш', 
-    'o':'щ', 
-    'p':'з', 
-    '[':'х', 
+    'q':'й',
+    'w':'ц',
+    'e':'у',
+    'r':'к',
+    't':'е',
+    'y':'н',
+    'u':'г',
+    'i':'ш',
+    'o':'щ',
+    'p':'з',
+    '[':'х',
     '{':'х',
     '}':'ъ',
     ']':'ъ',
@@ -268,4 +356,3 @@ ru_layout = {
     ' ':' ',
     '!':'!'
 }
-        
