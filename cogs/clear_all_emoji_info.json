@@ -1,0 +1,12 @@
+{
+    "AUTHOR": "Toil",
+    "SHORT" : "Remove all emoji from message",
+    "DESCRIPTION" : "You can remove all emoji from message.",
+    "NAME" : "Clear_all_emoji",
+    "TAGS" : [
+        "Clear_all_emoji",
+        "clear_all_emoji",
+        "clear_all_reaction",
+        "Стереть_все_эмодзи"
+    ]
+}

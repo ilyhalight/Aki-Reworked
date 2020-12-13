@@ -1,0 +1,12 @@
+{
+    "AUTHOR": "Toil",
+    "SHORT" : "Add emoji to message",
+    "DESCRIPTION" : "You can add emoji to any message.",
+    "NAME" : "Emoji",
+    "TAGS" : [
+        "Emoji",
+        "emoji",
+        "Reaction",
+        "Эмодзи"
+    ]
+}

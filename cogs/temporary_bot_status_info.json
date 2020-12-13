@@ -1,0 +1,12 @@
+{
+    "AUTHOR": "Toil",
+    "SHORT" : "Set temporary status to bot",
+    "DESCRIPTION" : "Allows you to set the temporary status of the bot (Until restart).",
+    "NAME" : "Temporary_bot_status",
+    "TAGS" : [
+        "Temporary_bot_status",
+        "temporary_bot_status",
+        "Временный_статус_бота",
+        "временный_статус_бота"
+    ]
+}

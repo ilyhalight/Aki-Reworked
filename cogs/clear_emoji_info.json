@@ -1,0 +1,12 @@
+{
+    "AUTHOR": "Toil",
+    "SHORT" : "Remove specific emoji from message",
+    "DESCRIPTION" : "You can remove specific emoji from message.",
+    "NAME" : "Clear_emoji",
+    "TAGS" : [
+        "Clear_emoji",
+        "clear_emoji",
+        "clear_reaction",
+        "Стереть_эмодзи"
+    ]
+}

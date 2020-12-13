@@ -1,0 +1,12 @@
+{
+   "AUTHOR":"Toil",
+   "SHORT":"Shows resource consumption",
+   "DESCRIPTION":"Shows information about the resources consumed by the bot",
+   "NAME":"Resource",
+   "TAGS":[
+      "Resource",
+      "Analytics",
+      "Resources",
+      "Ресурсы"
+   ]
+}

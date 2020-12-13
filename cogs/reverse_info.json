@@ -1,0 +1,12 @@
+{
+   "AUTHOR":"Toil",
+   "SHORT":"Does reverse text",
+   "DESCRIPTION":"Makes incorrect Russian text readable",
+   "NAME":"Reverse",
+   "TAGS":[
+      "Reverse",
+      "reverse",
+      "Реверс",
+      "Обратный"
+   ]
+}

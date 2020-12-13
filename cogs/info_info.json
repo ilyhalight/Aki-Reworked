@@ -1,0 +1,12 @@
+{
+   "AUTHOR":"Toil",
+   "SHORT":"Show bot information",
+   "DESCRIPTION":"Show information about the bot and its current version.",
+   "NAME":"Info",
+   "TAGS":[
+      "Info",
+      "info",
+      "Инфо",
+      "инфо"
+   ]
+}

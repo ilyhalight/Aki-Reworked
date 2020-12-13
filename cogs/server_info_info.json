@@ -1,0 +1,13 @@
+{
+   "AUTHOR":"Fsoky Community",
+   "ADAPTED":"Toil",
+   "SHORT":"Shows information about the server",
+   "DESCRIPTION":"Shows all information about the server.",
+   "NAME":"Server_info",
+   "TAGS":[
+      "Server_info",
+      "Server",
+      "Сервер",
+      "Сервер_инфо"
+   ]
+}

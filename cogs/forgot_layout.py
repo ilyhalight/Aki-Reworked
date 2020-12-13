@@ -1,0 +1,45 @@
+import discord
+import config
+from discord.ext import commands
+from config import cogs_color
+from useful import prefix, copyright_en, ru_layout
+class Forgot_layout(commands.Cog):
+    """Forgot Layout"""
+
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command(aliases = ['Forgot_layout', 'forgot_layout', 'Forgotlayout', 'forgotlayout', 'Ru_layout', 'ru_layout', 'Rulayout', 'rulayout', 'Забыл_раскладку', 'забыл_раскладку', 'Забылраскладку', 'забылраскладку', 'Ру_раскладка', 'ру_раскладка', 'Рураскладка', 'рураскладка'])
+    async def __Forgot_layout(self, ctx, *, message = None):
+        if message == None:
+            emb = discord.Embed(description = f'Example: `{prefix}ru_layout ghbdtn` - A message will be displayed привет.', color = cogs_color['LAYOUT COLOR EXAMPLE'])
+            emb.set_footer(text = copyright_en, icon_url = self.bot.user.avatar_url)
+            await ctx.send(embed = emb)
+            print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}ru_layout [EU]')
+        else:
+            itog = ""
+            errors = ""
+            for i in message:
+                if i.lower() in ru_layout:
+                    itog += ru_layout[i.lower()]
+                else:
+                    errors += f"`{i}` "
+            if len(errors) <= 0:
+                 errors_itog = ""
+            else:
+                errors_itog = f"\nНепереведенные символы: {errors}"
+                print(f"[Logs:utils] [Warning] Перевод содержит непереведенные символы | {prefix}ru_layout [EU]")
+
+            if len(itog) <= 0:
+                emb = discord.Embed(description = 'Failed to translate message! :pencil:\nPerhaps you are trying to translate transliteration into a Russian word', color = cogs_color['LAYOUT COLOR ERROR'])
+                emb.set_footer(text = copyright_en, icon_url = self.bot.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f"[Logs:utils] [Error] Не удалось перевести сообщение | {prefix}ru_layout [EU]")
+            else:
+                itog_new = f"Translation: {itog}"
+                emb = discord.Embed(description = f'{itog_new}{errors_itog}', color = cogs_color['LAYOUT COLOR EXAMPLE'])
+                emb.set_footer(text = copyright_en, icon_url = self.bot.user.avatar_url)
+                await ctx.send(embed = emb)
+                print(f"[Logs:utils] Текст был успешно переведен на русскую раскладку | {prefix}ru_layout [EU]")
+def setup(bot):
+    bot.add_cog(Forgot_layout(bot))

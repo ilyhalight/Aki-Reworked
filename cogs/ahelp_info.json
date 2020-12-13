@@ -1,0 +1,12 @@
+{
+   "AUTHOR":"Toil",
+   "SHORT":"Show admin commands",
+   "DESCRIPTION":"You can get information about all admin commands.",
+   "NAME":"ahelp",
+   "TAGS":[
+      "Ahelp",
+      "ahelp",
+      "Ахелп",
+      "ахелп"
+   ]
+}
