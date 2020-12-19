@@ -41,8 +41,8 @@ In addition to these modules (cogs), you can add other modules.
 # Installation
 
 **The following operating systems are officially supported:**
- - [Windows](https://vk.com/board201228277?act=create)
- - [Linux](https://vk.com/board201228277?act=create)
+ - [Windows](https://vk.com/topic-201228277_46782415)
+ - [Linux](https://vk.com/topic-201228277_46782415)
  
  # Discord
 
