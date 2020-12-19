@@ -14,3 +14,7 @@
      <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
   </a>
 </p>
+
+<h1> Overview </h1>
+
+Aki is a modular bot - a bot in which most of the functions and commands can be enabled / disabled. This is a self-hosted bot - meaning you will need to host and maintain your own instance
