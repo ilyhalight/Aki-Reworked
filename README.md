@@ -1,4 +1,4 @@
-<h1 align = center> Aki Reworked [Discord.py]</h1>
+<h1 align = center> Aki Reworked </h1>
 
 <h4 align="center">Music, Moderation, Fun, Trivia and Modular.</h4>
 
@@ -20,8 +20,6 @@
   •
   <a href="#installation">Installation</a>
   •
-  <a href="#plugins">Plugins</a>
-  •
   <a href="#discord">Discord</a>
   •
   <a href="#license">License</a>
@@ -29,5 +27,29 @@
 
 # Overview
 
-Aki is a modular bot - a bot in which most of the functions and commands can be enabled / disabled. This is a self-hosted bot - meaning you will need to host and maintain your own instance
+Aki is a modular bot - a bot in which most of the functions and commands can be enabled / disabled. This is a self-hosted bot - meaning you will need to host and maintain your own instance.
 
+**The default set of modules includes:**
+ - Moderation (Soon)
+ - Role-Play (Soon)
+ - Fun
+ - Utilities
+ - Music (Soon)
+
+In addition to these modules (cogs), you can add other modules.
+
+# Installation
+
+**The following operating systems are officially supported:**
+ - [Windows](https://vk.com/board201228277?act=create)
+ - [Linux](https://vk.com/board201228277?act=create)
+ 
+ # Discord
+
+Aki Reworked is constantly evolving and improving, adding new cogs and functions.
+
+In our discord you can find information and help on the bot: https://discord.gg/Vh3VcaEv23
+
+# License
+
+Released under the [MIT License](https://opensource.org/licenses/MIT).
