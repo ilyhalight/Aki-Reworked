@@ -15,6 +15,21 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="#overview">Overview</a>
+  •
+  <a href="#installation">Installation</a>
+  •
+  <a href="http://red-discordbot.readthedocs.io/en/stable/index.html">Documentation</a>
+  •
+  <a href="#plugins">Plugins</a>
+  •
+  <a href="#join-the-community">Community</a>
+  •
+  <a href="#license">License</a>
+</p>
+
 <h1> Overview </h1>
 
 Aki is a modular bot - a bot in which most of the functions and commands can be enabled / disabled. This is a self-hosted bot - meaning you will need to host and maintain your own instance
+
