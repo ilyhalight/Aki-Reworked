@@ -37,17 +37,17 @@ def backup_test():
     dir_name = f'backup\\Aki {patch} {data}'
     os.makedirs(dir_name)
     os.makedirs(f'{dir_name}\\cogs')
-    os.makedirs(f'{dir_name}\\Localization')
+    #os.makedirs(f'{dir_name}\\Localization')
     shutil.copy2('bot.py', f'{dir_name}')
-    shutil.copy2('config.py', f'{dir_name}') # TODO: Удалить, как закончу работу над переносом кфг системы
+    #shutil.copy2('config.py', f'{dir_name}') # TODO: Удалить, как закончу работу над переносом кфг системы
     shutil.copy2('config.json', f'{dir_name}')
     shutil.copy2('useful.py', f'{dir_name}')
     for file in os.listdir('.\\cogs'):
         if file.endswith('.py'):
             shutil.copy2(f'.\\cogs\\{file}', f'{dir_name}\\cogs')
-    for file in os.listdir('.\\Localization'):
-        if file.endswith('.json'):
-            shutil.copy2(f'.\\Localization\\{file}', f'{dir_name}\\Localization')
+    #for file in os.listdir('.\\Localization'):
+    #    if file.endswith('.json'):
+    #        shutil.copy2(f'.\\Localization\\{file}', f'{dir_name}\\Localization')
     backup_status = 'Сделан'
 
 def connection_test(): # Узнаем, доступен ли discord.com
