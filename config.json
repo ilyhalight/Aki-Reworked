@@ -1,0 +1,31 @@
+{
+    "settings": {
+        "prefix"            :   "$",
+        "debug"             :   "True",
+        "backups"           :   "True",
+        "language"          :   "Russian",
+        "token"             :   "##################WRITE UR TOKEN PLZ#######################",
+        "log channel"       :   782619819979046943
+    },
+    "other": {
+        "commands"          :   "21",
+        "bot"               :   "AKi",
+        "patch"             :   "0.2.1",
+        "version"           :   "Alpha",
+        "license"           :   "MIT License",
+        "special thanks"    :   "Fsoky#9610",
+        "id"                :   722197932916473876,
+        "owner"             :   "Toil#5605",
+        "owner id"          :   551653500216672256,
+        "owner ping"        :   "<@551653500216672256>"
+    },
+    "links" : {
+        "time msc"          :   "https://time100.ru/",
+        "time cet"          :   "https://time.is/CET",
+        "stream"            :   "https://www.twitch.tv/bratishkinoff",
+        "mcach"             :   "https://minecraftskinstealer.com/achievement/",
+        "discord"           :   "https://discord.com",
+        "discord server"    :   "https://discord.gg/Vh3VcaEv23",
+        "wikipedia img"     :   "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png"
+    }
+}

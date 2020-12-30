@@ -1,8 +1,37 @@
 import psutil as ps
-import config
+import json
 from psutil import virtual_memory
-from config import settings, quick_messages
-prefix = settings['PREFIX']
+from bcolor import colors
+
+
+path = 'config.json'
+with open(path, 'r') as f:
+    data = json.load(f)
+
+settings = data['settings']
+other = data['other']
+links = data['links']
+
+defcl = colors['default']
+errcl = colors['error']
+exacl = colors['example']
+logcl = colors['logs']
+
+prefix = settings['prefix']
+
+quick_messages = {
+	'UNKNOWN ERROR LOG': '[Logs:error] Произошла неизвестная ошибка! |',
+	'UNKNOWN ERROR': 'Произошла неизвестная ошибка!',
+	'UNKNOWN ERROR EN': 'An unknown error has occurred!',
+	'BOT STATUS LOG': '[Logs:owner] Статус бота был успешно сменен на:',
+	'THIRD PARTY SYM ERROR': 'Ошибка! Были найдены сторонние символы!',
+	'THIRD PARTY SYM ERROR EN': 'Mistake! Third party symbols were found!',
+	'THIRD PARTY SYM ERROR LOG': '[Logs:error] Ошибка! Были найдены сторонние символы! |',
+
+	'COPYRIGHT RU': 'Copyright © 2020 Aki | Все права защищены.',
+	'COPYRIGHT EN': 'Copyright © 2020 Aki | All rights reserved.',
+}
+
 copyright_ru = quick_messages['COPYRIGHT RU']
 copyright_en = quick_messages['COPYRIGHT EN']
 
