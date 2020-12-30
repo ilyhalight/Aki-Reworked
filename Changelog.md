@@ -156,3 +156,19 @@
 - Added 'HELP COLOR' to the cogs_color dictionary
 - Changed someone else's cog "PressF" for modern discord.py, And also reworked it to fit the style of my bot
 - Frequently used variables have been moved to custom module useful.py  (prefix, copyright_ru, copyright_en)
+
+# Alpha 0.2.1 - (2020-12-31)
+- Added .gitignore
+- Removed english versions of cogs
+- Removed the description of the cogs
+- Fixed information when starting the bot. Now the real status of connection to discord.com is shown
+- Added debug mode
+- Rewrote readme.md
+- Added autobackup at startup
+- Transferred the config system to json (config.py will be removed in 0.2.2)
+- Added command $backup
+- Changed forgot_layout error localization from English to Russian
+- Removed extra f-lines in help and ahelp
+- Fixed wrong color name in pressf
+- Fixed wrong color name in translit
+- Added minimal error handling to mcach
