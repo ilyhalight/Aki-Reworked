@@ -1,8 +1,6 @@
 import discord
-import config
 from discord.ext import commands
-from config import cogs_color, quick_messages, fast_link
-from useful import prefix, copyright_ru
+from useful import errcl, links, exacl, quick_messages, prefix, copyright_ru
 status_log = quick_messages['BOT STATUS LOG']
 unknown_log = quick_messages['UNKNOWN ERROR LOG']
 unknown = quick_messages['UNKNOWN ERROR']
@@ -16,7 +14,7 @@ class Temporary_bot_status(commands.Cog):
     @commands.is_owner()
     async def __botstatus(self, ctx, active = None, *, arg = None):
         if active == None or arg == None:
-            emb = discord.Embed(description = f'Пример: `{prefix}Временный_статус_бота Стримит $help` - Временный статус бота будет изменен на: "cтримит $help".', color = cogs_color['BOT COLOR EXAMPLE'])
+            emb = discord.Embed(description = f'Пример: `{prefix}Временный_статус_бота Стримит $help` - Временный статус бота будет изменен на: "cтримит $help".', color = exacl['temp status'])
             emb.set_footer(text = copyright_ru, icon_url = self.bot.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}Temp_bot_status')
@@ -33,7 +31,7 @@ class Temporary_bot_status(commands.Cog):
                 print(f'{status_log} "Играет в {arg}" | {prefix}Temp_bot_status')
 
             if active == 'Streaming' or active == 'streaming' or active == 'Stream' or active == 'stream' or active == 'Стримит' or active == 'стримит' or active == 'Стрим' or active == 'стрим' or active == 'Стримить' or active == 'стримить':
-                await self.bot.change_presence(status = discord.Status.idle, activity = discord.Activity(name = arg, url = fast_link['STREAM URL'], type = discord.ActivityType.streaming))
+                await self.bot.change_presence(status = discord.Status.idle, activity = discord.Activity(name = arg, url = links['stream'], type = discord.ActivityType.streaming))
                 await ctx.send('Изменяем...')
                 print(f'{status_log} "Стримит {arg}" | {prefix}Temp_bot_status')
 
@@ -43,9 +41,6 @@ class Temporary_bot_status(commands.Cog):
                 print(f'{status_log} "Смотрит {arg}" | {prefix}Temp_bot_status')
 
             else:
-                emb = discord.Embed(description = unknown, color = cogs_color['BOT COLOR ERROR'])
-                emb.set_footer(text = copyright_ru, icon_url = self.bot.user.avatar_url)
-                await ctx.send(embed = emb)
-                print(f'{unknown_log} {prefix}Temp_bot_status')
+                pass
 def setup(bot):
     bot.add_cog(Temporary_bot_status(bot))

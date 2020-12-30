@@ -1,8 +1,6 @@
 import discord
-import config
 from discord.ext import commands
-from config import cogs_color
-from useful import prefix, copyright_ru
+from useful import exacl, prefix, copyright_ru
 class Clear_all_emoji(commands.Cog):
     """Erase all emojis in message"""
 
@@ -18,7 +16,7 @@ class Clear_all_emoji(commands.Cog):
             await message.clear_reactions() # Очистить все реакции к сообщению
             print(f"[Logs:owner] В сообщение [{id}] были очищенны все эмоджи | {prefix}clear_all_emoji")
         else:
-            emb = discord.Embed(description = f'Пример: `{prefix}Стереть_все_эмодзи <id сообщения>` - Стереть абсолютно все эмоджи в сообщение.', color = cogs_color['CLEAR ALL EMOJI COLOR EXAMPLE'])
+            emb = discord.Embed(description = f'Пример: `{prefix}Стереть_все_эмодзи <id сообщения>` - Стереть абсолютно все эмоджи в сообщение.', color = exacl['cls all emoji'])
             emb.set_footer(text = copyright_ru, icon_url = self.bot.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}clear_all_emoji')

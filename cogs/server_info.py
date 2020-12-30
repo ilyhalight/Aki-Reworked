@@ -1,8 +1,6 @@
 import discord
-import config
 from discord.ext import commands
-from config import cogs_color
-from useful import prefix, copyright_ru
+from useful import defcl, prefix, copyright_ru
 class Server_info(commands.Cog):
     """Shows information about the server"""
 
@@ -15,7 +13,7 @@ class Server_info(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
-        emb = discord.Embed(title = ctx.guild.name, color = cogs_color['SERVER INFO COLOR'], timestamp = ctx.message.created_at)
+        emb = discord.Embed(title = ctx.guild.name, color = defcl['server info'], timestamp = ctx.message.created_at)
         emb.description=(
             f":timer: Сервер создали: **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
             f":flag_white: Регион: **{ctx.guild.region}\n\n"

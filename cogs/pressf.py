@@ -1,8 +1,7 @@
 import discord
-import asyncio, config
+import asyncio
 from discord.ext import commands
-from config import cogs_color
-from useful import prefix
+from useful import exacl
 class PressF(commands.Cog):
     """You can now pay repect to a person"""
 
@@ -14,7 +13,7 @@ class PressF(commands.Cog):
         author = ctx.message.author
         channel = ctx.message.channel
         if not user:
-            emb = discord.Embed(color = cogs_color['FUCK U NOT USER'])
+            emb = discord.Embed(color = exacl['press f'])
             emb.add_field(name = "Ошибка:warning:", value = "Вы должны упомянуть пользователя, {}".format(author.mention))
             await ctx.send(embed = emb)
         else:

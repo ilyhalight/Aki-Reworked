@@ -1,9 +1,8 @@
-import discord
-import config, time
+import discord, time
 import psutil as ps
 from discord.ext import commands
-from config import settings, emoji
 from useful import prefix, copyright_ru, ping_list, bytes2human
+ping_emoji = '🟩🔳🔳🔳🔳'
 startTime = time.time()
 class Resource(commands.Cog):
     """Shows system information about the bot"""
@@ -16,7 +15,6 @@ class Resource(commands.Cog):
         mem = ps.virtual_memory()
         ping = self.bot.ws.latency
 
-        ping_emoji = emoji['ping_emoji']
         for ping_one in ping_list:
             if ping <= ping_one["ping"]:
                 ping_emoji = ping_one["emoji"]

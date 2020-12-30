@@ -1,8 +1,6 @@
 import discord
-import config
 from discord.ext import commands
-from config import cogs_color
-from useful import prefix, copyright_ru
+from useful import exacl, prefix, copyright_ru
 class Del_emoji(commands.Cog):
     """Remove emoji from message"""
 
@@ -19,7 +17,7 @@ class Del_emoji(commands.Cog):
             await message.remove_reaction(reaction, user) # Удалить конкретную реакцию, конкретного пользователя в кокретном сообщение
             print(f"[Logs:owner] Отправленное пользователем {user} эмоджи было удалено для сообщения - [{id}] | {prefix}delete_emoji")
         else:
-            emb = discord.Embed(description = f'Пример: `{prefix}удалить_эмодзи <id сообщения> <эмоджи> [@Пользователь]` - Удалить конкретные эмоджи пользователя в сообщение.', color = cogs_color['DELETE EMOJI COLOR EXAMPLE'])
+            emb = discord.Embed(description = f'Пример: `{prefix}удалить_эмодзи <id сообщения> <эмоджи> [@Пользователь]` - Удалить конкретные эмоджи пользователя в сообщение.', color = exacl['delete emoji'])
             emb.set_footer(text = copyright_ru, icon_url = self.bot.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}delete_emoji')

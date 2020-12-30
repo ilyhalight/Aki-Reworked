@@ -1,8 +1,6 @@
 import discord
-import config
 from discord.ext import commands
-from config import cogs_color
-from useful import prefix, copyright_ru
+from useful import exacl, prefix, copyright_ru
 class Emoji(commands.Cog):
     """Add emoji to message"""
 
@@ -18,7 +16,7 @@ class Emoji(commands.Cog):
             await message.add_reaction(reaction) # Добавить реакцию к сообщению
             print(f'[Logs:owner] К сообщению [{id}] была добавлена эмоджи | {prefix}emoji')
         else:
-            emb = discord.Embed(description = f'Пример: `{prefix}эмоджи <id сообщения> <эмоджи>` - Добавить эмоджи к сообщению.', color = cogs_color['ADD EMOJI COLOR EXAMPLE'])
+            emb = discord.Embed(description = f'Пример: `{prefix}эмоджи <id сообщения> <эмоджи>` - Добавить эмоджи к сообщению.', color = exacl['add emoji'])
             emb.set_footer(text = copyright_ru, icon_url = self.bot.user.avatar_url)
             await ctx.send(embed = emb)
             print(f'[Logs:error] Один из аргументов не был введен корректно | {prefix}emoji')
