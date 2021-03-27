@@ -42,7 +42,7 @@ In addition to these modules (cogs), you can add other modules.
 
 **The following operating systems are officially supported:**
  - [Windows](https://vk.com/topic-201228277_46782415)
- - [Linux](https://vk.com/topic-201228277_46782415)
+ - [Linux (Should work)](https://vk.com/topic-201228277_46782415)
  
  # Discord
 
