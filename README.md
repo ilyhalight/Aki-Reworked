@@ -1,6 +1,6 @@
 <h1 align = center> Aki Reworked </h1>
 
-<h4 align="center">Music, Moderation, Fun, Trivia and Modular.</h4>
+<h4 align="center">Moderation, Music, Fun, Trivia and Modular.</h4>
 
 <p align="center">
 
